@@ -23,7 +23,7 @@ body{
 height:100vh;
 overflow:hidden;
 font-family:'Inter',sans-serif;
-background:black;
+background:#0f1724;
 color:white;
 }
 
@@ -34,18 +34,19 @@ position:fixed;
 inset:0;
 
 background:
+radial-gradient(circle at top, rgba(255,180,120,0.18), transparent 30%),
+radial-gradient(circle at bottom right, rgba(120,160,255,0.18), transparent 35%),
 linear-gradient(
 180deg,
-#f4dbe4 0%,
-#e4cfea 40%,
-#c9c2eb 70%,
-#a8c7e8 100%
+#182131 0%,
+#1f2b3f 40%,
+#2d3550 100%
 );
 
 overflow:hidden;
 }
 
-/* GLOW */
+/* LIGHT */
 
 .glow1,
 .glow2{
@@ -58,35 +59,35 @@ filter:blur(120px);
 width:500px;
 height:500px;
 
-background:rgba(255,255,255,0.2);
+background:rgba(255,190,120,0.15);
 
-top:-100px;
-left:-100px;
+top:-120px;
+left:-120px;
 }
 
 .glow2{
 width:450px;
 height:450px;
 
-background:rgba(255,220,240,0.22);
+background:rgba(120,160,255,0.15);
 
-bottom:-100px;
-right:-100px;
+bottom:-120px;
+right:-120px;
 }
 
-/* PARTICLES */
+/* STARS */
 
 .star{
 position:absolute;
 
-width:4px;
-height:4px;
+width:3px;
+height:3px;
 
 background:white;
 
 border-radius:999px;
 
-opacity:0.4;
+opacity:0.45;
 
 animation:float linear infinite;
 }
@@ -119,7 +120,12 @@ transition:1s;
 
 .content{
 width:100%;
-max-width:950px;
+max-width:1000px;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
 
 text-align:center;
 
@@ -129,7 +135,7 @@ animation:fadeUp 1.5s ease;
 @keyframes fadeUp{
 from{
 opacity:0;
-transform:translateY(25px);
+transform:translateY(30px);
 }
 to{
 opacity:1;
@@ -142,36 +148,42 @@ transform:translateY(0);
 .mainTitle{
 font-family:'Cormorant Garamond',serif;
 
-font-size:82px;
+font-size:88px;
 font-weight:400;
 
 line-height:1.1;
 
-color:white;
+color:#f8f4ef;
 
 text-shadow:
-0 5px 30px rgba(0,0,0,0.15);
+0 5px 35px rgba(0,0,0,0.35);
 }
 
 .secondTitle{
 font-family:'Cormorant Garamond',serif;
 
-font-size:56px;
+font-size:64px;
 font-weight:400;
 
-line-height:1.2;
+line-height:1.15;
+
+color:#f8f4ef;
+
+text-align:center;
 }
 
 /* TEXT */
 
 .text{
-margin-top:25px;
+margin-top:24px;
 
 font-size:21px;
 
-color:rgba(255,255,255,0.9);
+line-height:1.7;
 
-line-height:1.6;
+color:rgba(255,255,255,0.78);
+
+text-align:center;
 }
 
 /* BUTTON */
@@ -179,15 +191,15 @@ line-height:1.6;
 button{
 margin-top:45px;
 
-padding:18px 48px;
+padding:18px 50px;
 
 border:none;
 
 border-radius:999px;
 
-background:rgba(255,255,255,0.2);
+background:rgba(255,255,255,0.08);
 
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 
 color:white;
 
@@ -196,12 +208,17 @@ font-size:17px;
 cursor:pointer;
 
 transition:0.35s;
+
+border:1px solid rgba(255,255,255,0.12);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.2);
 }
 
 button:hover{
 transform:scale(1.05);
 
-background:rgba(255,255,255,0.32);
+background:rgba(255,255,255,0.14);
 }
 
 /* INPUT */
@@ -211,7 +228,7 @@ margin-top:35px;
 }
 
 input{
-width:320px;
+width:340px;
 
 padding:18px;
 
@@ -221,25 +238,27 @@ outline:none;
 
 border-radius:18px;
 
-background:rgba(255,255,255,0.16);
+background:rgba(255,255,255,0.08);
 
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 
 color:white;
 
 font-size:17px;
 
 text-align:center;
+
+border:1px solid rgba(255,255,255,0.12);
 }
 
 input::placeholder{
-color:rgba(255,255,255,0.6);
+color:rgba(255,255,255,0.45);
 }
 
 /* FILM */
 
 #filmReveal{
-margin-top:45px;
+margin-top:50px;
 
 opacity:0;
 
@@ -249,9 +268,11 @@ transition:1.5s;
 .filmTitle{
 font-family:'Cormorant Garamond',serif;
 
-font-size:48px;
+font-size:52px;
 
 margin-bottom:20px;
+
+color:#ffe7c2;
 }
 
 .quote{
@@ -261,7 +282,7 @@ line-height:1.7;
 
 margin-bottom:35px;
 
-color:rgba(255,255,255,0.92);
+color:rgba(255,255,255,0.88);
 }
 
 /* VIDEO */
@@ -277,10 +298,10 @@ height:405px;
 
 border:none;
 
-border-radius:28px;
+border-radius:26px;
 
 box-shadow:
-0 25px 60px rgba(0,0,0,0.2);
+0 25px 60px rgba(0,0,0,0.35);
 }
 
 /* HIDDEN */
@@ -360,7 +381,7 @@ document.body.appendChild(star);
 
 <div class="text">
 Иногда ключ к чему-то важному<br>
-находится не здесь.
+находится совсем в другом месте.
 </div>
 
 <div class="passwordBox">

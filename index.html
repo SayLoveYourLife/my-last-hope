@@ -20,10 +20,10 @@ box-sizing:border-box;
 }
 
 body{
-overflow:hidden;
 height:100vh;
+overflow:hidden;
+background:#050816;
 font-family:'Inter',sans-serif;
-background:black;
 color:white;
 }
 
@@ -37,12 +37,10 @@ display:flex;
 justify-content:center;
 align-items:center;
 
-overflow-y:auto;
+transition:1.5s ease;
 
-transition:1.5s;
+overflow:hidden;
 }
-
-/* HIDDEN */
 
 .hidden{
 opacity:0;
@@ -50,58 +48,66 @@ pointer-events:none;
 transform:scale(1.03);
 }
 
-/* ================================= */
-/* NORMAL BACKGROUND */
-/* ================================= */
+/* BACKGROUND */
 
 .background{
 position:absolute;
 inset:0;
 
 background:
+radial-gradient(circle at top left,
+rgba(255,180,120,0.08),
+transparent 25%),
+
+radial-gradient(circle at bottom right,
+rgba(120,160,255,0.10),
+transparent 35%),
+
 linear-gradient(
 180deg,
-#111827 0%,
-#172033 50%,
-#1f2b45 100%
+#0a1020 0%,
+#10192f 50%,
+#16233d 100%
 );
 
-z-index:-2;
+z-index:-3;
 }
 
-/* LIGHTS */
+/* LIGHT */
 
-.light1,
-.light2{
+.glow1,
+.glow2{
 position:absolute;
+
 border-radius:999px;
+
 filter:blur(120px);
 }
 
-.light1{
-width:350px;
-height:350px;
+.glow1{
+width:400px;
+height:400px;
 
-background:rgba(255,190,120,0.08);
+background:rgba(255,200,150,0.08);
 
-top:-100px;
-left:-100px;
+top:-120px;
+left:-120px;
 }
 
-.light2{
-width:350px;
-height:350px;
+.glow2{
+width:400px;
+height:400px;
 
-background:rgba(120,160,255,0.10);
+background:rgba(120,180,255,0.10);
 
-bottom:-100px;
-right:-100px;
+bottom:-120px;
+right:-120px;
 }
 
-/* STARS */
+/* PARTICLES */
 
-.star{
-position:fixed;
+.particle{
+position:absolute;
 
 width:2px;
 height:2px;
@@ -128,7 +134,7 @@ transform:translateY(-100px);
 
 .content{
 width:100%;
-max-width:950px;
+max-width:1000px;
 
 display:flex;
 flex-direction:column;
@@ -142,17 +148,20 @@ padding:40px;
 
 /* TITLES */
 
-.main-title{
+.mainTitle{
 font-family:'Cormorant Garamond',serif;
 
-font-size:82px;
+font-size:84px;
 
 line-height:1.1;
 
 margin-bottom:25px;
+
+text-shadow:
+0 5px 30px rgba(0,0,0,0.4);
 }
 
-.password-title{
+.secondTitle{
 font-family:'Cormorant Garamond',serif;
 
 font-size:56px;
@@ -169,9 +178,9 @@ font-size:22px;
 
 line-height:1.8;
 
-color:rgba(255,255,255,0.72);
+max-width:700px;
 
-max-width:650px;
+color:rgba(255,255,255,0.72);
 }
 
 /* BUTTON */
@@ -213,6 +222,8 @@ width:360px;
 
 padding:18px;
 
+margin-top:35px;
+
 border:none;
 outline:none;
 
@@ -229,8 +240,10 @@ color:white;
 font-size:17px;
 
 text-align:center;
+}
 
-margin-top:35px;
+input::placeholder{
+color:rgba(255,255,255,0.45);
 }
 
 /* FILM */
@@ -239,21 +252,22 @@ margin-top:35px;
 display:none;
 
 margin-top:45px;
-padding-bottom:100px;
+
+animation:fadeUp 1.5s ease;
 }
 
-.film-title{
+.filmTitle{
 font-family:'Cormorant Garamond',serif;
 
-font-size:50px;
+font-size:52px;
 
-margin-bottom:18px;
+margin-bottom:20px;
 
 color:#ffe4b5;
 }
 
 .quote{
-font-size:21px;
+font-size:22px;
 
 line-height:1.8;
 
@@ -273,260 +287,172 @@ border:none;
 border-radius:24px;
 
 box-shadow:
-0 20px 50px rgba(0,0,0,0.35);
+0 20px 60px rgba(0,0,0,0.45);
 }
 
-/* ================================= */
-/* FOREST */
-/* ================================= */
+/* CINEMATIC WORLD */
 
-#forestWorld{
-display:none;
-overflow:hidden;
-
-background:
-linear-gradient(
-180deg,
-#02070d 0%,
-#07131b 45%,
-#0b1820 100%
-);
-}
-
-/* MOON */
-
-.moon{
-position:absolute;
-
-top:80px;
-right:140px;
-
-width:180px;
-height:180px;
-
-border-radius:999px;
-
-background:
-radial-gradient(circle,
-#dbeafe 0%,
-#cbd5e1 40%,
-rgba(255,255,255,0.2) 70%,
-transparent 100%);
-
-box-shadow:
-0 0 120px rgba(180,220,255,0.35);
-}
-
-/* FOG */
-
-.fog{
-position:absolute;
-
-width:1400px;
-height:400px;
-
-background:rgba(255,255,255,0.03);
-
-filter:blur(90px);
-
-border-radius:999px;
-
-animation:fogMove 18s linear infinite;
-}
-
-@keyframes fogMove{
-0%{
-transform:translateX(-200px);
-}
-100%{
-transform:translateX(200px);
-}
-}
-
-/* TREES */
-
-.tree{
-position:absolute;
-
-bottom:0;
-
-width:260px;
-height:100vh;
-
-background:
-linear-gradient(
-180deg,
-rgba(0,0,0,0) 0%,
-rgba(0,0,0,0.75) 70%
-);
-
-clip-path:polygon(
-45% 0%,
-55% 0%,
-60% 100%,
-40% 100%
-);
-
-opacity:0.8;
-}
-
-.branch{
-position:absolute;
-
-background:#05080c;
-
-border-radius:999px;
-}
-
-/* GLOW PARTICLES */
-
-.firefly{
-position:absolute;
-
-width:5px;
-height:5px;
-
-background:#fde68a;
-
-border-radius:999px;
-
-box-shadow:
-0 0 15px #fde68a;
-
-animation:firefly 4s ease-in-out infinite;
-}
-
-@keyframes firefly{
-0%,100%{
-opacity:0.2;
-transform:translateY(0px);
-}
-50%{
-opacity:1;
-transform:translateY(-20px);
-}
-}
-
-/* STUMP */
-
-.stump{
-position:absolute;
-
-bottom:90px;
-
-width:260px;
-height:150px;
-
-border-radius:50%;
-
-background:
-linear-gradient(
-180deg,
-#5b3a29 0%,
-#2f1e17 100%
-);
-
-box-shadow:
-0 20px 50px rgba(0,0,0,0.45);
-
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-/* NOTE */
-
-.note{
-width:140px;
-height:100px;
-
-background:#f4e7ca;
-
-border-radius:10px;
-
-color:#2b2b2b;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-text-align:center;
-
-padding:10px;
-
-font-size:17px;
-
-cursor:pointer;
-
-transform:rotate(-5deg);
-
-transition:0.3s;
-}
-
-.note:hover{
-transform:
-rotate(-2deg)
-scale(1.06);
-}
-
-/* NOTE POPUP */
-
-#notePopup{
-position:absolute;
-inset:0;
-
-background:rgba(0,0,0,0.72);
-
-backdrop-filter:blur(10px);
-
+#cinematicWorld{
 display:none;
 
-justify-content:center;
-align-items:center;
-
-z-index:30;
+background:
+linear-gradient(
+180deg,
+#02040b 0%,
+#060c18 50%,
+#0b1220 100%
+);
 }
 
-.noteContent{
-width:720px;
+/* LIGHT RAIN */
 
-padding:70px;
+.rain{
+position:absolute;
+
+width:1px;
+height:120px;
 
 background:
 linear-gradient(
 180deg,
-#f8efdf 0%,
-#ead9ba 100%
+rgba(255,255,255,0),
+rgba(255,255,255,0.18),
+rgba(255,255,255,0)
 );
 
-border-radius:30px;
-
-color:#2b2b2b;
-
-text-align:center;
-
-box-shadow:
-0 30px 80px rgba(0,0,0,0.5);
+animation:rainFall linear infinite;
 }
 
-.noteContent h2{
+@keyframes rainFall{
+
+from{
+transform:translateY(-150px);
+}
+
+to{
+transform:translateY(120vh);
+}
+
+}
+
+/* MESSAGE */
+
+.messageBox{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+gap:35px;
+
+animation:fadeUp 2s ease;
+}
+
+.message{
 font-family:'Cormorant Garamond',serif;
 
 font-size:58px;
 
+line-height:1.3;
+
+opacity:0;
+
+transform:translateY(30px);
+
+animation:messageFade 2s forwards;
+}
+
+.message:nth-child(1){
+animation-delay:1s;
+}
+
+.message:nth-child(2){
+animation-delay:4s;
+}
+
+.message:nth-child(3){
+animation-delay:7s;
+}
+
+@keyframes messageFade{
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* LETTER */
+
+#letter{
+opacity:0;
+
+margin-top:60px;
+
+max-width:850px;
+
+padding:55px;
+
+border-radius:28px;
+
+background:
+linear-gradient(
+180deg,
+rgba(255,255,255,0.08),
+rgba(255,255,255,0.04)
+);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+box-shadow:
+0 20px 80px rgba(0,0,0,0.35);
+
+animation:letterFade 2s forwards;
+
+animation-delay:10s;
+}
+
+@keyframes letterFade{
+
+to{
+opacity:1;
+}
+
+}
+
+#letter h2{
+font-family:'Cormorant Garamond',serif;
+
+font-size:56px;
+
 margin-bottom:30px;
 }
 
-.noteContent p{
-font-size:24px;
+#letter p{
+font-size:22px;
 
-line-height:1.9;
+line-height:2;
+
+color:rgba(255,255,255,0.82);
 }
 
-.closeBtn{
-margin-top:40px;
+/* ANIM */
 
-background:#1f2937;
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(25px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
 }
 
 </style>
@@ -534,20 +460,20 @@ background:#1f2937;
 
 <body>
 
-<!-- FIRST SCREEN -->
+<!-- MAIN -->
 
 <section class="screen" id="mainScreen">
 
 <div class="background">
 
-<div class="light1"></div>
-<div class="light2"></div>
+<div class="glow1"></div>
+<div class="glow2"></div>
 
 </div>
 
 <div class="content">
 
-<div class="main-title">
+<div class="mainTitle">
 Есть вещи,<br>
 которые сложно сказать напрямую.
 </div>
@@ -564,20 +490,20 @@ background:#1f2937;
 
 </section>
 
-<!-- PASSWORD SCREEN -->
+<!-- PASSWORD -->
 
 <section class="screen hidden" id="passwordScreen">
 
 <div class="background">
 
-<div class="light1"></div>
-<div class="light2"></div>
+<div class="glow1"></div>
+<div class="glow2"></div>
 
 </div>
 
 <div class="content">
 
-<div class="password-title">
+<div class="secondTitle">
 Спроси пароль<br>
 у “того самого”.
 </div>
@@ -599,7 +525,7 @@ placeholder="Введите пароль"
 
 <div id="filmReveal">
 
-<div class="film-title">
+<div class="filmTitle">
 Before Sunrise
 </div>
 
@@ -615,7 +541,7 @@ allowfullscreen>
 
 <br>
 
-<button onclick="openForest()">
+<button onclick="openWorld()">
 продолжить
 </button>
 
@@ -625,74 +551,71 @@ allowfullscreen>
 
 </section>
 
-<!-- FOREST -->
+<!-- CINEMATIC WORLD -->
 
-<section class="screen hidden" id="forestWorld">
+<section class="screen hidden" id="cinematicWorld">
 
-<div class="moon"></div>
+<div class="messageBox">
 
-<div class="fog"></div>
+<div class="message">
+Некоторые люди<br>
+появляются случайно.
+</div>
 
-<div class="tree" style="left:5%;"></div>
-<div class="tree" style="left:18%;"></div>
-<div class="tree" style="left:72%;"></div>
-<div class="tree" style="left:88%;"></div>
+<div class="message">
+А некоторые<br>
+меняют всё вокруг тебя.
+</div>
 
-<div class="stump">
+<div class="message">
+И я долго думал,<br>
+с чего всё началось.
+</div>
 
-<div class="note" onclick="openNote()">
-открыть<br>
-записку
+<div id="letter">
+
+<h2>
+Наверное…
+</h2>
+
+<p>
+В какой-то момент ты стала человеком,
+о котором я начал думать слишком часто.<br><br>
+
+Не специально.<br>
+Не внезапно.<br><br>
+
+Это просто произошло.<br><br>
+
+И чем дальше шло время —
+тем сильнее я понимал,
+что ты стала чем-то
+намного большим,
+чем просто “одним человеком”.
+</p>
+
 </div>
 
 </div>
 
 </section>
 
-<!-- NOTE -->
-
-<div id="notePopup">
-
-<div class="noteContent">
-
-<h2>
-Я долго думал,<br>
-с чего всё началось.
-</h2>
-
-<p>
-Может с какого-то разговора.<br>
-Может со случайного момента.<br><br>
-
-Но в какой-то момент<br>
-ты стала человеком,<br>
-о котором я начал думать слишком часто.
-</p>
-
-<button class="closeBtn" onclick="closeNote()">
-закрыть
-</button>
-
-</div>
-
-</div>
-
 <script>
 
-/* STARS */
+/* PARTICLES */
 
 for(let i=0;i<35;i++){
 
-const star=document.createElement('div');
+const particle=document.createElement('div');
 
-star.className='star';
+particle.className='particle';
 
-star.style.left=Math.random()*100+'vw';
+particle.style.left=Math.random()*100+'vw';
 
-star.style.animationDuration=
+particle.style.animationDuration=
 (8+Math.random()*10)+'s';
 
-document.body.appendChild(star);
+document.body.appendChild(particle);
 
 }
 
@@ -723,16 +646,6 @@ document
 .getElementById('filmReveal')
 .style.display='block';
 
-setTimeout(()=>{
-
-document
-.getElementById('filmReveal')
-.scrollIntoView({
-behavior:'smooth'
-});
-
-},200);
-
 }else{
 
 alert('Нет... это воспоминание не отсюда.');
@@ -741,60 +654,40 @@ alert('Нет... это воспоминание не отсюда.');
 
 }
 
-/* OPEN FOREST */
+/* OPEN WORLD */
 
-function openForest(){
+function openWorld(){
 
 document
 .getElementById('passwordScreen')
 .classList.add('hidden');
 
-const forest =
-document.getElementById('forestWorld');
+const world =
+document.getElementById('cinematicWorld');
 
-forest.style.display='flex';
+world.style.display='flex';
 
-forest.classList.remove('hidden');
+world.classList.remove('hidden');
 
-/* CREATE FIREFLIES */
+/* CREATE RAIN */
 
-for(let i=0;i<25;i++){
+for(let i=0;i<80;i++){
 
-const firefly =
-document.createElement('div');
+const rain=document.createElement('div');
 
-firefly.className='firefly';
+rain.className='rain';
 
-firefly.style.left=
-Math.random()*100+'vw';
+rain.style.left=Math.random()*100+'vw';
 
-firefly.style.top=
-Math.random()*100+'vh';
+rain.style.animationDuration=
+(2+Math.random()*2)+'s';
 
-firefly.style.animationDelay=
-Math.random()*4+'s';
+rain.style.animationDelay=
+Math.random()*3+'s';
 
-forest.appendChild(firefly);
+world.appendChild(rain);
 
 }
-
-}
-
-/* NOTE */
-
-function openNote(){
-
-document
-.getElementById('notePopup')
-.style.display='flex';
-
-}
-
-function closeNote(){
-
-document
-.getElementById('notePopup')
-.style.display='none';
 
 }
 

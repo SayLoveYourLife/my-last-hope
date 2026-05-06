@@ -44,7 +44,7 @@ linear-gradient(
 overflow:hidden;
 }
 
-/* SOFT LIGHTS */
+/* LIGHTS */
 
 .glow1{
 position:absolute;
@@ -78,7 +78,7 @@ bottom:-150px;
 right:-100px;
 }
 
-/* STARS */
+/* PARTICLES */
 
 .star{
 position:absolute;
@@ -104,14 +104,12 @@ transform:translateY(-100px);
 }
 }
 
-/* MAIN SCREEN */
+/* SCREEN */
 
 .screen{
-position:relative;
+position:absolute;
 
-z-index:10;
-
-height:100vh;
+inset:0;
 
 display:flex;
 justify-content:center;
@@ -120,6 +118,8 @@ align-items:center;
 text-align:center;
 
 padding:20px;
+
+transition:1.2s;
 }
 
 /* CONTENT */
@@ -157,7 +157,7 @@ text-shadow:
 0 4px 30px rgba(0,0,0,0.18);
 }
 
-/* SUBTEXT */
+/* TEXT */
 
 p{
 margin-top:30px;
@@ -208,10 +208,80 @@ box-shadow:
 0 15px 50px rgba(255,255,255,0.2);
 }
 
+/* PASSWORD */
+
+.password-box{
+margin-top:40px;
+
+display:flex;
+flex-direction:column;
+gap:20px;
+
+align-items:center;
+}
+
+input{
+width:320px;
+
+padding:18px;
+
+border-radius:20px;
+
+border:none;
+
+outline:none;
+
+background:rgba(255,255,255,0.15);
+
+backdrop-filter:blur(10px);
+
+color:white;
+
+font-size:18px;
+
+text-align:center;
+}
+
+input::placeholder{
+color:rgba(255,255,255,0.5);
+}
+
+#movieReveal{
+margin-top:30px;
+
+font-size:40px;
+
+font-family:'Cormorant Garamond',serif;
+
+opacity:0;
+
+transition:1s;
+
+color:white;
+}
+
+/* FINAL SCREEN */
+
+.finalMessage{
+margin-top:25px;
+
+font-size:24px;
+
+opacity:0.9;
+}
+
+.hidden{
+opacity:0;
+pointer-events:none;
+transform:scale(1.05);
+}
+
 </style>
 </head>
 
 <body>
+
+<!-- BACKGROUND -->
 
 <div class="background">
 
@@ -220,7 +290,7 @@ box-shadow:
 
 </div>
 
-<!-- STARS -->
+<!-- PARTICLES -->
 
 <script>
 
@@ -243,9 +313,9 @@ document.body.appendChild(star);
 
 </script>
 
-<!-- SCREEN -->
+<!-- SCREEN 1 -->
 
-<section class="screen">
+<section class="screen" id="mainScreen">
 
 <div class="content">
 
@@ -258,13 +328,120 @@ document.body.appendChild(star);
 Поэтому я создал целый мир.
 </p>
 
-<button>
+<button onclick="openPassword()">
 войти
 </button>
 
 </div>
 
 </section>
+
+<!-- SCREEN 2 -->
+
+<section class="screen hidden" id="passwordScreen">
+
+<div class="content">
+
+<h1 style="font-size:70px;">
+Введите пароль
+</h1>
+
+<p>
+Подсказка скрыта в одном фильме.
+</p>
+
+<div class="password-box">
+
+<input
+type="text"
+id="passwordInput"
+placeholder="••••••••"
+/>
+
+<button onclick="checkPassword()">
+открыть
+</button>
+
+</div>
+
+<div id="movieReveal">
+Interstellar
+</div>
+
+</div>
+
+</section>
+
+<!-- SCREEN 3 -->
+
+<section class="screen hidden" id="finalScreen">
+
+<div class="content">
+
+<h1>
+Добро пожаловать,<br>
+Элина.
+</h1>
+
+<div class="finalMessage">
+Это только начало путешествия.
+</div>
+
+</div>
+
+</section>
+
+<!-- SCRIPT -->
+
+<script>
+
+function openPassword(){
+
+document
+.getElementById('mainScreen')
+.classList.add('hidden');
+
+document
+.getElementById('passwordScreen')
+.classList.remove('hidden');
+
+}
+
+function checkPassword(){
+
+const password =
+document.getElementById('passwordInput').value;
+
+if(password === '01:12:43'){
+
+const reveal =
+document.getElementById('movieReveal');
+
+reveal.style.opacity='1';
+
+setTimeout(()=>{
+
+document
+.getElementById('passwordScreen')
+.classList.add('hidden');
+
+document
+.getElementById('finalScreen')
+.classList.remove('hidden');
+
+},2000);
+
+}
+
+else{
+
+alert('Нет... это воспоминание не отсюда.');
+
+}
+
+}
+
+</script>
 
 </body>
 </html>

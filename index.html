@@ -23,7 +23,7 @@ body{
 height:100vh;
 overflow:hidden;
 font-family:'Inter',sans-serif;
-background:#0f1724;
+background:#111827;
 color:white;
 }
 
@@ -34,13 +34,13 @@ position:fixed;
 inset:0;
 
 background:
-radial-gradient(circle at top, rgba(255,190,120,0.14), transparent 30%),
-radial-gradient(circle at bottom right, rgba(120,160,255,0.18), transparent 35%),
+radial-gradient(circle at top left, rgba(255,190,120,0.10), transparent 25%),
+radial-gradient(circle at bottom right, rgba(120,160,255,0.14), transparent 35%),
 linear-gradient(
 180deg,
-#182131 0%,
-#1e2a3d 45%,
-#293756 100%
+#141c2b 0%,
+#1b2740 50%,
+#243454 100%
 );
 
 overflow:hidden;
@@ -52,27 +52,27 @@ overflow:hidden;
 .glow2{
 position:absolute;
 border-radius:999px;
-filter:blur(120px);
+filter:blur(140px);
 }
 
 .glow1{
-width:500px;
-height:500px;
+width:400px;
+height:400px;
 
-background:rgba(255,190,120,0.12);
+background:rgba(255,190,120,0.08);
 
-top:-120px;
-left:-120px;
+top:-100px;
+left:-100px;
 }
 
 .glow2{
-width:450px;
-height:450px;
+width:400px;
+height:400px;
 
-background:rgba(120,160,255,0.12);
+background:rgba(120,160,255,0.10);
 
-bottom:-120px;
-right:-120px;
+bottom:-100px;
+right:-100px;
 }
 
 /* STARS */
@@ -80,14 +80,14 @@ right:-120px;
 .star{
 position:absolute;
 
-width:3px;
-height:3px;
+width:2px;
+height:2px;
 
 background:white;
 
 border-radius:999px;
 
-opacity:0.45;
+opacity:0.5;
 
 animation:float linear infinite;
 }
@@ -118,29 +118,16 @@ transition:1s;
 
 .content{
 width:100%;
-max-width:1000px;
+max-width:900px;
 
 display:flex;
 flex-direction:column;
-justify-content:center;
 align-items:center;
+justify-content:center;
 
 text-align:center;
 
 padding:40px;
-
-animation:fadeUp 1.4s ease;
-}
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
 }
 
 /* TITLES */
@@ -148,24 +135,28 @@ transform:translateY(0);
 .mainTitle{
 font-family:'Cormorant Garamond',serif;
 
-font-size:88px;
+font-size:84px;
 font-weight:400;
 
 line-height:1.1;
 
 color:#f8f4ef;
 
+margin-bottom:20px;
+
 text-shadow:
-0 5px 35px rgba(0,0,0,0.35);
+0 5px 30px rgba(0,0,0,0.35);
 }
 
 .secondTitle{
 font-family:'Cormorant Garamond',serif;
 
-font-size:64px;
+font-size:58px;
 font-weight:400;
 
-line-height:1.15;
+line-height:1.2;
+
+margin-bottom:25px;
 
 color:#f8f4ef;
 }
@@ -173,21 +164,19 @@ color:#f8f4ef;
 /* TEXT */
 
 .text{
-margin-top:26px;
-
-font-size:21px;
+font-size:20px;
 
 line-height:1.8;
 
-color:rgba(255,255,255,0.76);
+color:rgba(255,255,255,0.72);
 
-max-width:700px;
+max-width:650px;
 }
 
 /* BUTTON */
 
 button{
-margin-top:45px;
+margin-top:40px;
 
 padding:18px 50px;
 
@@ -205,12 +194,9 @@ font-size:17px;
 
 cursor:pointer;
 
-transition:0.35s;
+transition:0.3s;
 
 border:1px solid rgba(255,255,255,0.12);
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.2);
 }
 
 button:hover{
@@ -221,12 +207,10 @@ background:rgba(255,255,255,0.14);
 
 /* INPUT */
 
-.passwordBox{
-margin-top:35px;
-}
-
 input{
 width:340px;
+
+margin-top:35px;
 
 padding:18px;
 
@@ -238,7 +222,7 @@ border-radius:18px;
 
 background:rgba(255,255,255,0.08);
 
-backdrop-filter:blur(12px);
+backdrop-filter:blur(10px);
 
 color:white;
 
@@ -250,13 +234,13 @@ border:1px solid rgba(255,255,255,0.12);
 }
 
 input::placeholder{
-color:rgba(255,255,255,0.45);
+color:rgba(255,255,255,0.4);
 }
 
 /* FILM */
 
 #filmReveal{
-margin-top:50px;
+margin-top:45px;
 
 opacity:0;
 
@@ -266,11 +250,11 @@ transition:1.5s;
 .filmTitle{
 font-family:'Cormorant Garamond',serif;
 
-font-size:52px;
+font-size:50px;
 
-margin-bottom:20px;
+margin-bottom:18px;
 
-color:#ffe7c2;
+color:#ffe3ba;
 }
 
 .quote{
@@ -278,17 +262,12 @@ font-size:20px;
 
 line-height:1.7;
 
-margin-bottom:35px;
+margin-bottom:30px;
 
-color:rgba(255,255,255,0.88);
+color:rgba(255,255,255,0.85);
 }
 
 /* VIDEO */
-
-.videoBox{
-display:flex;
-justify-content:center;
-}
 
 iframe{
 width:720px;
@@ -296,18 +275,16 @@ height:405px;
 
 border:none;
 
-border-radius:26px;
+border-radius:24px;
 
 box-shadow:
-0 25px 60px rgba(0,0,0,0.35);
+0 20px 50px rgba(0,0,0,0.35);
 }
 
 /* HIDDEN */
 
 .hidden{
-opacity:0;
-pointer-events:none;
-transform:scale(1.03);
+display:none;
 }
 
 </style>
@@ -324,7 +301,7 @@ transform:scale(1.03);
 
 <script>
 
-for(let i=0;i<40;i++){
+for(let i=0;i<35;i++){
 
 const star=document.createElement('div');
 
@@ -333,7 +310,7 @@ star.className='star';
 star.style.left=Math.random()*100+'vw';
 
 star.style.animationDuration=
-(7+Math.random()*10)+'s';
+(8+Math.random()*10)+'s';
 
 star.style.opacity=Math.random()*0.7;
 
@@ -381,19 +358,15 @@ document.body.appendChild(star);
 Иногда ключ к чему-то важному<br>
 находится совсем в другом месте.<br><br>
 
-Ты всегда знаешь,<br>
-к кому обратиться за помощью.
+Ты всегда знаешь к кому<br>
+обратиться за помощью.
 </div>
-
-<div class="passwordBox">
 
 <input
 type="text"
 id="passwordInput"
 placeholder="Введите пароль"
 />
-
-</div>
 
 <button onclick="checkPassword()">
 открыть
@@ -410,14 +383,10 @@ Before Sunrise
 a way to be loved a little more?”
 </div>
 
-<div class="videoBox">
-
 <iframe
 src="https://www.youtube.com/embed/6MUcuqbGTxc"
 allowfullscreen>
 </iframe>
-
-</div>
 
 </div>
 

@@ -27,6 +27,13 @@ font-family:'Inter',sans-serif;
 color:white;
 }
 
+/* HIDE SCROLLBAR */
+
+::-webkit-scrollbar{
+width:0;
+height:0;
+}
+
 /* SCREENS */
 
 .screen{
@@ -37,15 +44,20 @@ display:flex;
 justify-content:center;
 align-items:center;
 
-transition:1.5s ease;
+overflow-y:auto;
+overflow-x:hidden;
 
-overflow:hidden;
+padding:60px 20px;
+
+transition:1.2s ease;
 }
+
+/* HIDDEN */
 
 .hidden{
 opacity:0;
 pointer-events:none;
-transform:scale(1.03);
+transform:scale(1.02);
 }
 
 /* BACKGROUND */
@@ -56,11 +68,11 @@ inset:0;
 
 background:
 radial-gradient(circle at top left,
-rgba(255,180,120,0.08),
+rgba(255,190,120,0.08),
 transparent 25%),
 
 radial-gradient(circle at bottom right,
-rgba(120,160,255,0.10),
+rgba(120,170,255,0.10),
 transparent 35%),
 
 linear-gradient(
@@ -70,7 +82,7 @@ linear-gradient(
 #16233d 100%
 );
 
-z-index:-3;
+z-index:-2;
 }
 
 /* LIGHT */
@@ -78,9 +90,7 @@ z-index:-3;
 .glow1,
 .glow2{
 position:absolute;
-
 border-radius:999px;
-
 filter:blur(120px);
 }
 
@@ -107,7 +117,7 @@ right:-120px;
 /* PARTICLES */
 
 .particle{
-position:absolute;
+position:fixed;
 
 width:2px;
 height:2px;
@@ -116,7 +126,7 @@ background:white;
 
 border-radius:999px;
 
-opacity:0.4;
+opacity:0.35;
 
 animation:float linear infinite;
 }
@@ -143,7 +153,7 @@ justify-content:center;
 
 text-align:center;
 
-padding:40px;
+margin:auto;
 }
 
 /* TITLES */
@@ -151,14 +161,11 @@ padding:40px;
 .mainTitle{
 font-family:'Cormorant Garamond',serif;
 
-font-size:84px;
+font-size:82px;
 
 line-height:1.1;
 
 margin-bottom:25px;
-
-text-shadow:
-0 5px 30px rgba(0,0,0,0.4);
 }
 
 .secondTitle{
@@ -186,7 +193,7 @@ color:rgba(255,255,255,0.72);
 /* BUTTON */
 
 button{
-margin-top:45px;
+margin-top:40px;
 
 padding:18px 52px;
 
@@ -253,7 +260,9 @@ display:none;
 
 margin-top:45px;
 
-animation:fadeUp 1.5s ease;
+padding-bottom:100px;
+
+animation:fadeUp 1.2s ease;
 }
 
 .filmTitle{
@@ -276,9 +285,19 @@ margin-bottom:30px;
 color:rgba(255,255,255,0.88);
 }
 
+/* VIDEO FIX */
+
+.videoWrap{
+width:100%;
+max-width:900px;
+
+display:flex;
+justify-content:center;
+}
+
 iframe{
-width:720px;
-height:405px;
+width:900px;
+height:500px;
 
 max-width:100%;
 
@@ -290,7 +309,7 @@ box-shadow:
 0 20px 60px rgba(0,0,0,0.45);
 }
 
-/* CINEMATIC WORLD */
+/* WORLD */
 
 #cinematicWorld{
 display:none;
@@ -304,7 +323,7 @@ linear-gradient(
 );
 }
 
-/* LIGHT RAIN */
+/* RAIN */
 
 .rain{
 position:absolute;
@@ -344,6 +363,10 @@ align-items:center;
 justify-content:center;
 
 gap:35px;
+
+max-width:1000px;
+
+text-align:center;
 
 animation:fadeUp 2s ease;
 }
@@ -388,7 +411,7 @@ transform:translateY(0);
 #letter{
 opacity:0;
 
-margin-top:60px;
+margin-top:50px;
 
 max-width:850px;
 
@@ -416,11 +439,9 @@ animation-delay:10s;
 }
 
 @keyframes letterFade{
-
 to{
 opacity:1;
 }
-
 }
 
 #letter h2{
@@ -534,12 +555,14 @@ Before Sunrise
 a way to be loved a little more?”
 </div>
 
+<div class="videoWrap">
+
 <iframe
 src="https://www.youtube.com/embed/6MUcuqbGTxc"
 allowfullscreen>
 </iframe>
 
-<br>
+</div>
 
 <button onclick="openWorld()">
 продолжить
@@ -551,7 +574,7 @@ allowfullscreen>
 
 </section>
 
-<!-- CINEMATIC WORLD -->
+<!-- WORLD -->
 
 <section class="screen hidden" id="cinematicWorld">
 
@@ -642,9 +665,19 @@ document.getElementById('passwordInput').value;
 
 if(password === '01:16:42'){
 
-document
-.getElementById('filmReveal')
-.style.display='block';
+const reveal =
+document.getElementById('filmReveal');
+
+reveal.style.display='block';
+
+setTimeout(()=>{
+
+reveal.scrollIntoView({
+behavior:'smooth',
+block:'center'
+});
+
+},200);
 
 }else{
 
@@ -669,9 +702,9 @@ world.style.display='flex';
 
 world.classList.remove('hidden');
 
-/* CREATE RAIN */
+/* RAIN */
 
-for(let i=0;i<80;i++){
+for(let i=0;i<70;i++){
 
 const rain=document.createElement('div');
 

@@ -22,8 +22,8 @@ box-sizing:border-box;
 body{
 overflow:hidden;
 height:100vh;
-background:#0f172a;
 font-family:'Inter',sans-serif;
+background:black;
 color:white;
 }
 
@@ -38,26 +38,8 @@ justify-content:center;
 align-items:center;
 
 overflow-y:auto;
-overflow-x:hidden;
-
-padding:60px 20px;
 
 transition:1.5s;
-}
-
-/* SCROLLBAR */
-
-.screen::-webkit-scrollbar{
-width:8px;
-}
-
-.screen::-webkit-scrollbar-track{
-background:transparent;
-}
-
-.screen::-webkit-scrollbar-thumb{
-background:rgba(255,255,255,0.15);
-border-radius:999px;
 }
 
 /* HIDDEN */
@@ -68,21 +50,15 @@ pointer-events:none;
 transform:scale(1.03);
 }
 
-/* BACKGROUND */
+/* ================================= */
+/* NORMAL BACKGROUND */
+/* ================================= */
 
 .background{
 position:absolute;
 inset:0;
 
 background:
-radial-gradient(circle at top left,
-rgba(255,180,120,0.12),
-transparent 25%),
-
-radial-gradient(circle at bottom right,
-rgba(120,160,255,0.14),
-transparent 35%),
-
 linear-gradient(
 180deg,
 #111827 0%,
@@ -134,7 +110,7 @@ background:white;
 
 border-radius:999px;
 
-opacity:0.5;
+opacity:0.4;
 
 animation:float linear infinite;
 }
@@ -161,7 +137,7 @@ justify-content:center;
 
 text-align:center;
 
-margin:auto;
+padding:40px;
 }
 
 /* TITLES */
@@ -170,29 +146,20 @@ margin:auto;
 font-family:'Cormorant Garamond',serif;
 
 font-size:82px;
-font-weight:500;
 
 line-height:1.1;
 
 margin-bottom:25px;
-
-color:#f8fafc;
-
-text-shadow:
-0 5px 30px rgba(0,0,0,0.35);
 }
 
 .password-title{
 font-family:'Cormorant Garamond',serif;
 
 font-size:56px;
-font-weight:500;
 
 line-height:1.2;
 
 margin-bottom:25px;
-
-color:#f8fafc;
 }
 
 /* TEXT */
@@ -266,10 +233,6 @@ text-align:center;
 margin-top:35px;
 }
 
-input::placeholder{
-color:rgba(255,255,255,0.45);
-}
-
 /* FILM */
 
 #filmReveal{
@@ -277,19 +240,6 @@ display:none;
 
 margin-top:45px;
 padding-bottom:100px;
-
-animation:fade 1.5s ease;
-}
-
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
 }
 
 .film-title{
@@ -307,9 +257,9 @@ font-size:21px;
 
 line-height:1.8;
 
-color:rgba(255,255,255,0.88);
-
 margin-bottom:30px;
+
+color:rgba(255,255,255,0.88);
 }
 
 iframe{
@@ -326,18 +276,45 @@ box-shadow:
 0 20px 50px rgba(0,0,0,0.35);
 }
 
+/* ================================= */
 /* FOREST */
+/* ================================= */
 
 #forestWorld{
 display:none;
+overflow:hidden;
 
 background:
 linear-gradient(
 180deg,
-#071018 0%,
-#0d1a23 45%,
-#10212d 100%
+#02070d 0%,
+#07131b 45%,
+#0b1820 100%
 );
+}
+
+/* MOON */
+
+.moon{
+position:absolute;
+
+top:80px;
+right:140px;
+
+width:180px;
+height:180px;
+
+border-radius:999px;
+
+background:
+radial-gradient(circle,
+#dbeafe 0%,
+#cbd5e1 40%,
+rgba(255,255,255,0.2) 70%,
+transparent 100%);
+
+box-shadow:
+0 0 120px rgba(180,220,255,0.35);
 }
 
 /* FOG */
@@ -345,7 +322,7 @@ linear-gradient(
 .fog{
 position:absolute;
 
-width:1200px;
+width:1400px;
 height:400px;
 
 background:rgba(255,255,255,0.03);
@@ -354,7 +331,7 @@ filter:blur(90px);
 
 border-radius:999px;
 
-animation:fogMove 20s linear infinite;
+animation:fogMove 18s linear infinite;
 }
 
 @keyframes fogMove{
@@ -366,29 +343,91 @@ transform:translateX(200px);
 }
 }
 
+/* TREES */
+
+.tree{
+position:absolute;
+
+bottom:0;
+
+width:260px;
+height:100vh;
+
+background:
+linear-gradient(
+180deg,
+rgba(0,0,0,0) 0%,
+rgba(0,0,0,0.75) 70%
+);
+
+clip-path:polygon(
+45% 0%,
+55% 0%,
+60% 100%,
+40% 100%
+);
+
+opacity:0.8;
+}
+
+.branch{
+position:absolute;
+
+background:#05080c;
+
+border-radius:999px;
+}
+
+/* GLOW PARTICLES */
+
+.firefly{
+position:absolute;
+
+width:5px;
+height:5px;
+
+background:#fde68a;
+
+border-radius:999px;
+
+box-shadow:
+0 0 15px #fde68a;
+
+animation:firefly 4s ease-in-out infinite;
+}
+
+@keyframes firefly{
+0%,100%{
+opacity:0.2;
+transform:translateY(0px);
+}
+50%{
+opacity:1;
+transform:translateY(-20px);
+}
+}
+
 /* STUMP */
 
 .stump{
 position:absolute;
 
-bottom:120px;
+bottom:90px;
 
-width:220px;
-height:140px;
+width:260px;
+height:150px;
+
+border-radius:50%;
 
 background:
 linear-gradient(
 180deg,
-#5c4033 0%,
-#3b2a22 100%
+#5b3a29 0%,
+#2f1e17 100%
 );
 
-border-radius:
-50% 50%
-35% 35%;
-
 box-shadow:
-0 0 50px rgba(0,0,0,0.4);
+0 20px 50px rgba(0,0,0,0.45);
 
 display:flex;
 justify-content:center;
@@ -398,14 +437,14 @@ align-items:center;
 /* NOTE */
 
 .note{
-width:120px;
-height:90px;
+width:140px;
+height:100px;
 
-background:#f5e6c8;
+background:#f4e7ca;
 
-color:#2a2a2a;
+border-radius:10px;
 
-font-size:16px;
+color:#2b2b2b;
 
 display:flex;
 justify-content:center;
@@ -415,32 +454,28 @@ text-align:center;
 
 padding:10px;
 
-border-radius:8px;
+font-size:17px;
 
 cursor:pointer;
 
 transform:rotate(-5deg);
 
 transition:0.3s;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.3);
 }
 
 .note:hover{
 transform:
-rotate(-3deg)
-scale(1.05);
+rotate(-2deg)
+scale(1.06);
 }
 
 /* NOTE POPUP */
 
 #notePopup{
 position:absolute;
-
 inset:0;
 
-background:rgba(0,0,0,0.65);
+background:rgba(0,0,0,0.72);
 
 backdrop-filter:blur(10px);
 
@@ -449,41 +484,41 @@ display:none;
 justify-content:center;
 align-items:center;
 
-z-index:20;
+z-index:30;
 }
 
 .noteContent{
-width:700px;
+width:720px;
 
-padding:60px;
+padding:70px;
 
 background:
 linear-gradient(
 180deg,
-#f6eddc 0%,
-#eadcc0 100%
+#f8efdf 0%,
+#ead9ba 100%
 );
 
-border-radius:25px;
+border-radius:30px;
 
-color:#2a2a2a;
+color:#2b2b2b;
 
 text-align:center;
 
 box-shadow:
-0 20px 80px rgba(0,0,0,0.45);
+0 30px 80px rgba(0,0,0,0.5);
 }
 
 .noteContent h2{
 font-family:'Cormorant Garamond',serif;
 
-font-size:52px;
+font-size:58px;
 
-margin-bottom:25px;
+margin-bottom:30px;
 }
 
 .noteContent p{
-font-size:22px;
+font-size:24px;
 
 line-height:1.9;
 }
@@ -491,39 +526,7 @@ line-height:1.9;
 .closeBtn{
 margin-top:40px;
 
-background:#2a2a2a;
-
-color:white;
-}
-
-/* BUTTERFLIES */
-
-.butterfly{
-position:absolute;
-
-font-size:24px;
-
-opacity:0.7;
-
-animation:butterflyFly linear infinite;
-}
-
-@keyframes butterflyFly{
-
-0%{
-transform:
-translateY(100vh)
-translateX(0px)
-rotate(0deg);
-}
-
-100%{
-transform:
-translateY(-150px)
-translateX(120px)
-rotate(25deg);
-}
-
+background:#1f2937;
 }
 
 </style>
@@ -531,7 +534,7 @@ rotate(25deg);
 
 <body>
 
-<!-- SCREEN 1 -->
+<!-- FIRST SCREEN -->
 
 <section class="screen" id="mainScreen">
 
@@ -561,7 +564,7 @@ rotate(25deg);
 
 </section>
 
-<!-- SCREEN 2 -->
+<!-- PASSWORD SCREEN -->
 
 <section class="screen hidden" id="passwordScreen">
 
@@ -626,7 +629,14 @@ allowfullscreen>
 
 <section class="screen hidden" id="forestWorld">
 
+<div class="moon"></div>
+
 <div class="fog"></div>
+
+<div class="tree" style="left:5%;"></div>
+<div class="tree" style="left:18%;"></div>
+<div class="tree" style="left:72%;"></div>
+<div class="tree" style="left:88%;"></div>
 
 <div class="stump">
 
@@ -667,9 +677,9 @@ allowfullscreen>
 
 </div>
 
-<!-- STARS -->
-
 <script>
+
+/* STARS */
 
 for(let i=0;i<35;i++){
 
@@ -682,17 +692,11 @@ star.style.left=Math.random()*100+'vw';
 star.style.animationDuration=
 (8+Math.random()*10)+'s';
 
-star.style.opacity=Math.random()*0.7;
-
 document.body.appendChild(star);
 
 }
 
-</script>
-
-<!-- SCRIPT -->
-
-<script>
+/* OPEN PASSWORD */
 
 function openPassword(){
 
@@ -705,6 +709,8 @@ document
 .classList.remove('hidden');
 
 }
+
+/* PASSWORD */
 
 function checkPassword(){
 
@@ -735,6 +741,8 @@ alert('Нет... это воспоминание не отсюда.');
 
 }
 
+/* OPEN FOREST */
+
 function openForest(){
 
 document
@@ -748,31 +756,31 @@ forest.style.display='flex';
 
 forest.classList.remove('hidden');
 
-/* CREATE BUTTERFLIES ONLY HERE */
+/* CREATE FIREFLIES */
 
-for(let i=0;i<15;i++){
+for(let i=0;i<25;i++){
 
-const butterfly =
+const firefly =
 document.createElement('div');
 
-butterfly.className='butterfly';
+firefly.className='firefly';
 
-butterfly.innerHTML='🦋';
-
-butterfly.style.left=
+firefly.style.left=
 Math.random()*100+'vw';
 
-butterfly.style.animationDuration=
-(8+Math.random()*10)+'s';
+firefly.style.top=
+Math.random()*100+'vh';
 
-butterfly.style.animationDelay=
-Math.random()*5+'s';
+firefly.style.animationDelay=
+Math.random()*4+'s';
 
-forest.appendChild(butterfly);
+forest.appendChild(firefly);
+
+}
 
 }
 
-}
+/* NOTE */
 
 function openNote(){
 

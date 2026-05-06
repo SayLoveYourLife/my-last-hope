@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
@@ -20,10 +20,10 @@ box-sizing:border-box;
 }
 
 body{
-height:100vh;
 overflow:hidden;
+height:100vh;
+background:#0f172a;
 font-family:'Inter',sans-serif;
-background:#111827;
 color:white;
 }
 
@@ -34,30 +34,34 @@ position:fixed;
 inset:0;
 
 background:
-radial-gradient(circle at top left, rgba(255,190,120,0.10), transparent 25%),
-radial-gradient(circle at bottom right, rgba(120,160,255,0.14), transparent 35%),
+radial-gradient(circle at top left,
+rgba(255,180,120,0.12),
+transparent 25%),
+
+radial-gradient(circle at bottom right,
+rgba(120,160,255,0.14),
+transparent 35%),
+
 linear-gradient(
 180deg,
-#141c2b 0%,
-#1b2740 50%,
-#243454 100%
+#111827 0%,
+#172033 50%,
+#1f2b45 100%
 );
-
-overflow:hidden;
 }
 
-/* GLOW */
+/* LIGHT */
 
-.glow1,
-.glow2{
+.light1,
+.light2{
 position:absolute;
 border-radius:999px;
-filter:blur(140px);
+filter:blur(120px);
 }
 
-.glow1{
-width:400px;
-height:400px;
+.light1{
+width:350px;
+height:350px;
 
 background:rgba(255,190,120,0.08);
 
@@ -65,9 +69,9 @@ top:-100px;
 left:-100px;
 }
 
-.glow2{
-width:400px;
-height:400px;
+.light2{
+width:350px;
+height:350px;
 
 background:rgba(120,160,255,0.10);
 
@@ -101,7 +105,7 @@ transform:translateY(-100px);
 }
 }
 
-/* SCREEN */
+/* SCREENS */
 
 .screen{
 position:absolute;
@@ -111,7 +115,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 
-transition:1s;
+padding:40px;
 }
 
 /* CONTENT */
@@ -126,45 +130,28 @@ align-items:center;
 justify-content:center;
 
 text-align:center;
-
-padding:40px;
 }
 
 /* TITLES */
 
-.mainTitle{
+.main-title{
 font-family:'Cormorant Garamond',serif;
 
-font-size:84px;
-font-weight:400;
+font-size:82px;
+font-weight:500;
 
 line-height:1.1;
 
-color:#f8f4ef;
+margin-bottom:25px;
 
-margin-bottom:20px;
+color:#f8fafc;
 
 text-shadow:
 0 5px 30px rgba(0,0,0,0.35);
 }
 
-.secondTitle{
-font-family:'Cormorant Garamond',serif;
-
-font-size:58px;
-font-weight:400;
-
-line-height:1.2;
-
-margin-bottom:25px;
-
-color:#f8f4ef;
-}
-
-/* TEXT */
-
 .text{
-font-size:20px;
+font-size:22px;
 
 line-height:1.8;
 
@@ -176,9 +163,9 @@ max-width:650px;
 /* BUTTON */
 
 button{
-margin-top:40px;
+margin-top:45px;
 
-padding:18px 50px;
+padding:18px 52px;
 
 border:none;
 
@@ -188,6 +175,8 @@ background:rgba(255,255,255,0.08);
 
 backdrop-filter:blur(12px);
 
+border:1px solid rgba(255,255,255,0.12);
+
 color:white;
 
 font-size:17px;
@@ -195,8 +184,6 @@ font-size:17px;
 cursor:pointer;
 
 transition:0.3s;
-
-border:1px solid rgba(255,255,255,0.12);
 }
 
 button:hover{
@@ -205,66 +192,103 @@ transform:scale(1.05);
 background:rgba(255,255,255,0.14);
 }
 
+/* PASSWORD SCREEN */
+
+#passwordScreen{
+display:none;
+}
+
+.password-title{
+font-family:'Cormorant Garamond',serif;
+
+font-size:56px;
+font-weight:500;
+
+line-height:1.2;
+
+margin-bottom:25px;
+
+color:#f8fafc;
+}
+
+.password-text{
+font-size:24px;
+
+line-height:1.9;
+
+color:rgba(255,255,255,0.75);
+
+margin-bottom:35px;
+}
+
 /* INPUT */
 
 input{
-width:340px;
-
-margin-top:35px;
+width:360px;
 
 padding:18px;
 
 border:none;
-
 outline:none;
 
 border-radius:18px;
 
 background:rgba(255,255,255,0.08);
 
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,0.12);
 
 color:white;
 
 font-size:17px;
 
 text-align:center;
-
-border:1px solid rgba(255,255,255,0.12);
 }
 
 input::placeholder{
-color:rgba(255,255,255,0.4);
+color:rgba(255,255,255,0.45);
 }
 
-/* FILM */
+/* FILM REVEAL */
 
 #filmReveal{
+display:none;
+
 margin-top:45px;
 
-opacity:0;
-
-transition:1.5s;
+animation:fade 1.5s ease;
 }
 
-.filmTitle{
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.film-title{
 font-family:'Cormorant Garamond',serif;
 
 font-size:50px;
 
 margin-bottom:18px;
 
-color:#ffe3ba;
+color:#ffe4b5;
 }
 
 .quote{
-font-size:20px;
+font-size:21px;
 
-line-height:1.7;
+line-height:1.8;
+
+color:rgba(255,255,255,0.88);
 
 margin-bottom:30px;
-
-color:rgba(255,255,255,0.85);
 }
 
 /* VIDEO */
@@ -281,23 +305,21 @@ box-shadow:
 0 20px 50px rgba(0,0,0,0.35);
 }
 
-/* HIDDEN */
-
-.hidden{
-display:none;
-}
-
 </style>
 </head>
 
 <body>
 
+<!-- BACKGROUND -->
+
 <div class="background">
 
-<div class="glow1"></div>
-<div class="glow2"></div>
+<div class="light1"></div>
+<div class="light2"></div>
 
 </div>
+
+<!-- STARS -->
 
 <script>
 
@@ -320,13 +342,13 @@ document.body.appendChild(star);
 
 </script>
 
-<!-- SCREEN 1 -->
+<!-- FIRST SCREEN -->
 
 <section class="screen" id="mainScreen">
 
 <div class="content">
 
-<div class="mainTitle">
+<div class="main-title">
 Есть вещи,<br>
 которые сложно сказать напрямую.
 </div>
@@ -343,13 +365,18 @@ document.body.appendChild(star);
 
 </section>
 
-<!-- SCREEN 2 -->
+<!-- SECOND SCREEN -->
 
-<section class="screen hidden" id="passwordScreen">
+<section class="screen" id="passwordScreen">
 
 <div class="content">
 
-<div class="text" style="font-size:28px; line-height:2;">
+<div class="password-title">
+Спроси пароль<br>
+у “того самого”.
+</div>
+
+<div class="password-text">
 Ты всегда знаешь к кому<br>
 обратиться за помощью.
 </div>
@@ -366,7 +393,7 @@ placeholder="Введите пароль"
 
 <div id="filmReveal">
 
-<div class="filmTitle">
+<div class="film-title">
 Before Sunrise
 </div>
 
@@ -390,13 +417,9 @@ allowfullscreen>
 
 function openPassword(){
 
-document
-.getElementById('mainScreen')
-.classList.add('hidden');
+document.getElementById('mainScreen').style.display='none';
 
-document
-.getElementById('passwordScreen')
-.classList.remove('hidden');
+document.getElementById('passwordScreen').style.display='flex';
 
 }
 
@@ -407,13 +430,9 @@ document.getElementById('passwordInput').value;
 
 if(password === '01:16:42'){
 
-document
-.getElementById('filmReveal')
-.style.opacity='1';
+document.getElementById('filmReveal').style.display='block';
 
-}
-
-else{
+}else{
 
 alert('Нет... это воспоминание не отсюда.');
 

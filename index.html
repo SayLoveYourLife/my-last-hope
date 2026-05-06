@@ -20,62 +20,57 @@ box-sizing:border-box;
 }
 
 body{
-overflow:hidden;
 height:100vh;
+overflow:hidden;
 font-family:'Inter',sans-serif;
-color:white;
 background:black;
+color:white;
 }
 
 /* BACKGROUND */
 
 .background{
-position:absolute;
+position:fixed;
 inset:0;
 
 background:
 linear-gradient(
 180deg,
 #f4dbe4 0%,
-#e6cfe5 30%,
-#c9c2eb 65%,
-#a9c7e8 100%
+#e4cfea 40%,
+#c9c2eb 70%,
+#a8c7e8 100%
 );
 
 overflow:hidden;
 }
 
-/* LIGHT */
+/* GLOW */
+
+.glow1,
+.glow2{
+position:absolute;
+border-radius:999px;
+filter:blur(120px);
+}
 
 .glow1{
-position:absolute;
+width:500px;
+height:500px;
 
-width:600px;
-height:600px;
+background:rgba(255,255,255,0.2);
 
-background:rgba(255,255,255,0.22);
-
-border-radius:999px;
-
-filter:blur(120px);
-
-top:-150px;
+top:-100px;
 left:-100px;
 }
 
 .glow2{
-position:absolute;
+width:450px;
+height:450px;
 
-width:500px;
-height:500px;
+background:rgba(255,220,240,0.22);
 
-background:rgba(255,220,240,0.25);
-
-border-radius:999px;
-
-filter:blur(120px);
-
-bottom:-150px;
+bottom:-100px;
 right:-100px;
 }
 
@@ -91,7 +86,7 @@ background:white;
 
 border-radius:999px;
 
-opacity:0.5;
+opacity:0.4;
 
 animation:float linear infinite;
 }
@@ -109,124 +104,130 @@ transform:translateY(-100px);
 
 .screen{
 position:absolute;
-
 inset:0;
 
 display:flex;
 justify-content:center;
 align-items:center;
 
-text-align:center;
+padding:40px;
 
-padding:20px;
-
-transition:1.2s;
+transition:1s;
 }
 
 /* CONTENT */
 
 .content{
-max-width:1100px;
+width:100%;
+max-width:950px;
 
-animation:fadeUp 2s ease forwards;
+text-align:center;
+
+animation:fadeUp 1.5s ease;
 }
 
 @keyframes fadeUp{
 from{
 opacity:0;
-transform:translateY(30px);
+transform:translateY(25px);
 }
 to{
 opacity:1;
-transform:translateY(0px);
+transform:translateY(0);
 }
 }
 
-/* TITLE */
+/* TITLES */
 
-h1{
+.mainTitle{
 font-family:'Cormorant Garamond',serif;
 
-font-size:90px;
+font-size:82px;
 font-weight:400;
 
 line-height:1.1;
 
-color:#fffafc;
+color:white;
 
 text-shadow:
-0 4px 30px rgba(0,0,0,0.18);
+0 5px 30px rgba(0,0,0,0.15);
+}
+
+.secondTitle{
+font-family:'Cormorant Garamond',serif;
+
+font-size:56px;
+font-weight:400;
+
+line-height:1.2;
 }
 
 /* TEXT */
 
-p{
-margin-top:30px;
+.text{
+margin-top:25px;
 
-font-size:22px;
-
-letter-spacing:1px;
+font-size:21px;
 
 color:rgba(255,255,255,0.9);
 
-text-shadow:
-0 2px 15px rgba(0,0,0,0.15);
+line-height:1.6;
 }
 
 /* BUTTON */
 
 button{
-margin-top:55px;
+margin-top:45px;
 
-padding:20px 55px;
+padding:18px 48px;
+
+border:none;
 
 border-radius:999px;
 
-border:1px solid rgba(255,255,255,0.35);
+background:rgba(255,255,255,0.2);
 
-background:rgba(255,255,255,0.18);
-
-backdrop-filter:blur(12px);
+backdrop-filter:blur(10px);
 
 color:white;
 
-font-size:18px;
+font-size:17px;
 
 cursor:pointer;
 
-transition:0.4s;
+transition:0.35s;
 }
 
 button:hover{
 transform:scale(1.05);
 
-background:rgba(255,255,255,0.28);
+background:rgba(255,255,255,0.32);
 }
 
-/* PASSWORD */
+/* INPUT */
 
 .passwordBox{
-margin-top:40px;
+margin-top:35px;
 }
 
 input{
-width:340px;
+width:320px;
 
 padding:18px;
 
 border:none;
 
-border-radius:20px;
+outline:none;
 
-background:rgba(255,255,255,0.18);
+border-radius:18px;
+
+background:rgba(255,255,255,0.16);
 
 backdrop-filter:blur(10px);
 
-outline:none;
-
 color:white;
 
-font-size:18px;
+font-size:17px;
 
 text-align:center;
 }
@@ -238,29 +239,29 @@ color:rgba(255,255,255,0.6);
 /* FILM */
 
 #filmReveal{
-margin-top:40px;
+margin-top:45px;
 
 opacity:0;
 
-transition:2s;
+transition:1.5s;
 }
 
 .filmTitle{
-font-size:54px;
-
 font-family:'Cormorant Garamond',serif;
+
+font-size:48px;
 
 margin-bottom:20px;
 }
 
 .quote{
-font-size:22px;
+font-size:20px;
 
-line-height:1.6;
-
-opacity:0.9;
+line-height:1.7;
 
 margin-bottom:35px;
+
+color:rgba(255,255,255,0.92);
 }
 
 /* VIDEO */
@@ -271,15 +272,15 @@ justify-content:center;
 }
 
 iframe{
-width:800px;
-height:450px;
+width:720px;
+height:405px;
 
 border:none;
 
-border-radius:30px;
+border-radius:28px;
 
 box-shadow:
-0 20px 60px rgba(0,0,0,0.25);
+0 25px 60px rgba(0,0,0,0.2);
 }
 
 /* HIDDEN */
@@ -287,15 +288,13 @@ box-shadow:
 .hidden{
 opacity:0;
 pointer-events:none;
-transform:scale(1.05);
+transform:scale(1.03);
 }
 
 </style>
 </head>
 
 <body>
-
-<!-- BACKGROUND -->
 
 <div class="background">
 
@@ -304,11 +303,9 @@ transform:scale(1.05);
 
 </div>
 
-<!-- PARTICLES -->
-
 <script>
 
-for(let i=0;i<45;i++){
+for(let i=0;i<40;i++){
 
 const star=document.createElement('div');
 
@@ -317,9 +314,9 @@ star.className='star';
 star.style.left=Math.random()*100+'vw';
 
 star.style.animationDuration=
-(6+Math.random()*12)+'s';
+(7+Math.random()*10)+'s';
 
-star.style.opacity=Math.random()*0.8;
+star.style.opacity=Math.random()*0.7;
 
 document.body.appendChild(star);
 
@@ -333,14 +330,14 @@ document.body.appendChild(star);
 
 <div class="content">
 
-<h1>
+<div class="mainTitle">
 Есть вещи,<br>
 которые сложно сказать напрямую.
-</h1>
+</div>
 
-<p>
+<div class="text">
 Поэтому я создал целый мир.
-</p>
+</div>
 
 <button onclick="openPassword()">
 войти
@@ -356,10 +353,15 @@ document.body.appendChild(star);
 
 <div class="content">
 
-<h1 style="font-size:70px;">
+<div class="secondTitle">
 Спроси пароль<br>
 у “того самого”.
-</h1>
+</div>
+
+<div class="text">
+Иногда ключ к чему-то важному<br>
+находится не здесь.
+</div>
 
 <div class="passwordBox">
 
@@ -382,7 +384,7 @@ Before Sunrise
 </div>
 
 <div class="quote">
-“Isn't everything we do in life
+“Isn't everything we do in life<br>
 a way to be loved a little more?”
 </div>
 
@@ -390,7 +392,6 @@ a way to be loved a little more?”
 
 <iframe
 src="https://www.youtube.com/embed/6MUcuqbGTxc"
-title="Before Sunrise"
 allowfullscreen>
 </iframe>
 
@@ -401,8 +402,6 @@ allowfullscreen>
 </div>
 
 </section>
-
-<!-- SCRIPT -->
 
 <script>
 

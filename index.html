@@ -89,24 +89,24 @@ inset:0;
 
 background:
 radial-gradient(circle at top,
-rgba(255,220,200,0.22),
+rgba(255,220,200,0.20),
 transparent 30%),
 
 radial-gradient(circle at bottom,
-rgba(255,170,190,0.15),
+rgba(255,170,190,0.12),
 transparent 40%),
 
 linear-gradient(
 180deg,
-#1b1020 0%,
-#2a1630 40%,
-#3a1f3f 100%
+#1a0f1f 0%,
+#29152d 40%,
+#341b38 100%
 );
 
 z-index:-5;
 }
 
-/* GLOW */
+/* GLOWS */
 
 .glow1,
 .glow2{
@@ -211,7 +211,7 @@ max-width:700px;
 color:rgba(255,255,255,0.72);
 }
 
-/* BUTTON */
+/* BUTTONS */
 
 button{
 margin-top:40px;
@@ -222,25 +222,41 @@ border:none;
 
 border-radius:999px;
 
-background:rgba(255,255,255,0.08);
+background:
+linear-gradient(
+180deg,
+rgba(80,35,55,0.95),
+rgba(55,20,38,0.95)
+);
 
 backdrop-filter:blur(12px);
 
-border:1px solid rgba(255,255,255,0.12);
+border:1px solid rgba(255,255,255,0.08);
 
-color:white;
+color:#fff5f7;
 
 font-size:17px;
 
 cursor:pointer;
 
 transition:0.3s;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.25);
 }
 
 button:hover{
 transform:scale(1.05);
 
-background:rgba(255,255,255,0.14);
+background:
+linear-gradient(
+180deg,
+rgba(110,45,75,1),
+rgba(75,28,50,1)
+);
+
+box-shadow:
+0 15px 40px rgba(0,0,0,0.35);
 }
 
 /* INPUT */
@@ -371,7 +387,7 @@ transform:scale(0.98);
 
 }
 
-/* LETTER SCREEN */
+/* LETTER */
 
 #letterScreen{
 display:none;
@@ -380,8 +396,6 @@ display:none;
 #lastPage{
 display:none;
 }
-
-/* LETTER */
 
 .letter{
 width:900px;
@@ -395,8 +409,8 @@ border-radius:35px;
 background:
 linear-gradient(
 180deg,
-rgba(255,245,235,0.92),
-rgba(255,232,222,0.88)
+rgba(255,245,235,0.94),
+rgba(255,232,222,0.90)
 );
 
 backdrop-filter:blur(20px);
@@ -480,8 +494,7 @@ font-size:38px;
 
 display:block;
 
-margin:
-35px 0;
+margin:35px 0;
 }
 
 .signature{
@@ -494,7 +507,27 @@ font-size:42px;
 text-align:right;
 }
 
-/* ANIMS */
+/* ANSWERS */
+
+.answerBox{
+margin-top:45px;
+}
+
+.answerText{
+display:none;
+
+margin-top:35px;
+
+font-size:24px;
+
+line-height:1.9;
+
+color:#4a2d38;
+
+animation:fadeUp 0.5s ease;
+}
+
+/* ANIMATIONS */
 
 @keyframes fadeUp{
 
@@ -642,82 +675,29 @@ allowfullscreen>
 из тех,
 которые потом невозможно вспомнить по деталям.<br><br>
 
-Ни музыка.
-Ни время.
-Ни погода уже не имеют значения.<br><br>
-
 Помнится только странное ощущение,
 будто в привычном мире
 вдруг появился человек,
 рядом с которым всё стало звучать иначе.<br><br>
 
-Как будто разговоры начали оставаться в голове дольше,
-чем должны были.<br><br>
-
-Как будто случайные сообщения
-стали ожидаться слишком сильно.<br><br>
-
 Как будто среди сотен людей
-внимание почему-то снова и снова
+внимание снова и снова
 возвращалось только к тебе.<br><br>
 
-И знаешь…
-самое страшное —
-я даже не заметил,
-в какой именно момент это произошло.<br><br>
-
-Не было никакой вспышки.
-Никакой красивой сцены из фильма.
-Никакой музыки на фоне.<br><br>
-
-Было только это медленное,
-почти незаметное чувство,
-которое день за днём
-становилось всё тяжелее прятать внутри себя.<br><br>
-
-Я начал ловить себя на том,
-что думаю о тебе утром.<br>
-Думаю ночью.<br>
-Думаю среди шума,
-среди дел,
-среди людей.<br><br>
-
 И чем дальше —
-тем сильнее понимал,
+тем сильнее я понимал,
 что ты каким-то образом
 стала частью моего внутреннего мира.<br><br>
-
-Есть люди,
-которые просто проходят мимо.<br><br>
-
-А есть те,
-после которых
-внутри человека навсегда меняется атмосфера.<br><br>
-
-И ты стала именно такой.<br><br>
 
 <span class="highlight">
 Той,
 о ком невозможно думать “немного”.
 </span>
 
-Той,
-чьё имя внезапно начинает звучать
-внутри головы тише,
-бережнее,
-почти как что-то хрупкое.<br><br>
-
 Я долго пытался убедить себя,
 что это пройдёт.<br><br>
 
-Что это просто симпатия.
-Просто привычка.
-Просто очередной человек.<br><br>
-
 Но правда оказалась гораздо страшнее.<br><br>
-
-Потому что в какой-то момент
-я понял одну очень простую вещь.<br><br>
 
 <span class="highlight">
 Я влюбился в тебя.
@@ -750,7 +730,7 @@ allowfullscreen>
 
 </section>
 
-<!-- LAST PAGE -->
+<!-- FINAL -->
 
 <section class="screen hidden" id="lastPage">
 
@@ -758,16 +738,7 @@ allowfullscreen>
 
 <div class="content">
 
-<div class="letter"
-style="
-max-width:950px;
-background:
-linear-gradient(
-180deg,
-rgba(255,240,235,0.94),
-rgba(255,228,235,0.90)
-);
-">
+<div class="letter">
 
 <div class="letterIntro">
 Но есть кое-что,<br>
@@ -781,84 +752,50 @@ rgba(255,228,235,0.90)
 который по-настоящему влюблялся,
 хотя бы раз боялся одной вещи.<br><br>
 
-Что все его чувства —
-окажутся односторонними.<br><br>
-
 Что однажды
 он откроет своё сердце,
 а в ответ услышит только тишину.<br><br>
 
 И если честно…
-я тоже этого боюсь.<br><br>
-
-Но,
-кажется,
-мне всё равно хотелось,
-чтобы ты узнала правду.
+я тоже этого боюсь.
 
 </div>
 
-<button onclick="showAnswers()" style="margin-top:50px;">
-ответить
-</button>
-
-<div id="answers"
-style="
-display:none;
-margin-top:45px;
-">
+<div class="answerBox">
 
 <div style="
-font-size:28px;
-margin-bottom:35px;
+font-size:30px;
+margin-bottom:30px;
 font-family:'Cormorant Garamond',serif;
+color:#4a2d38;
 ">
 Ты влюблена в меня?
 </div>
 
-<button onclick="fakeAnswer()">
+<button onclick="toggleFakeAnswer()">
 ДА
 </button>
 
-<button onclick="realAnswer()" style="margin-left:20px;">
+<button onclick="toggleRealAnswer()" style="margin-left:20px;">
 Я ВЫЙДУ ЗА ТЕБЯ ЗАМУЖ
 </button>
 
-</div>
-
-<div id="joke1"
-style="
-display:none;
-margin-top:40px;
-font-size:26px;
-line-height:1.8;
-color:#4a2d38;
-">
+<div id="fakeAnswer" class="answerText">
 😈<br><br>
 а я нет.<br>
 бебебе
 </div>
 
-<div id="joke2"
-style="
-display:none;
-margin-top:40px;
-max-width:750px;
-color:#4a2d38;
-">
+<div id="realAnswer" class="answerText">
 
 <div style="
-font-size:32px;
+font-size:34px;
 font-family:'Cormorant Garamond',serif;
-margin-bottom:25px;
+margin-bottom:20px;
 ">
 Генофобия
 </div>
 
-<div style="
-font-size:22px;
-line-height:1.9;
-">
 Генофобия — это навязчивый страх
 романтической близости и женщин.<br><br>
 
@@ -977,6 +914,8 @@ letter.classList.remove('hidden');
 
 }
 
+/* FINAL PAGE */
+
 function openLastPage(){
 
 document
@@ -992,27 +931,39 @@ page.classList.remove('hidden');
 
 }
 
-function showAnswers(){
+/* TOGGLE ANSWERS */
 
-document
-.getElementById('answers')
-.style.display='block';
+function toggleFakeAnswer(){
+
+const answer =
+document.getElementById('fakeAnswer');
+
+if(answer.style.display === 'block'){
+
+answer.style.display = 'none';
+
+}else{
+
+answer.style.display = 'block';
 
 }
 
-function fakeAnswer(){
-
-document
-.getElementById('joke1')
-.style.display='block';
-
 }
 
-function realAnswer(){
+function toggleRealAnswer(){
 
-document
-.getElementById('joke2')
-.style.display='block';
+const answer =
+document.getElementById('realAnswer');
+
+if(answer.style.display === 'block'){
+
+answer.style.display = 'none';
+
+}else{
+
+answer.style.display = 'block';
+
+}
 
 }
 

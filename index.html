@@ -22,12 +22,12 @@ box-sizing:border-box;
 body{
 overflow:hidden;
 height:100vh;
-font-family:'Inter',sans-serif;
 background:#0f172a;
+font-family:'Inter',sans-serif;
 color:white;
 }
 
-/* GLOBAL SCREENS */
+/* SCREENS */
 
 .screen{
 position:absolute;
@@ -37,9 +37,27 @@ display:flex;
 justify-content:center;
 align-items:center;
 
-overflow:hidden;
+overflow-y:auto;
+overflow-x:hidden;
+
+padding:60px 20px;
 
 transition:1.5s;
+}
+
+/* SCROLLBAR */
+
+.screen::-webkit-scrollbar{
+width:8px;
+}
+
+.screen::-webkit-scrollbar-track{
+background:transparent;
+}
+
+.screen::-webkit-scrollbar-thumb{
+background:rgba(255,255,255,0.15);
+border-radius:999px;
 }
 
 /* HIDDEN */
@@ -47,12 +65,10 @@ transition:1.5s;
 .hidden{
 opacity:0;
 pointer-events:none;
-transform:scale(1.05);
+transform:scale(1.03);
 }
 
-/* ================================= */
-/* FIRST SCENE */
-/* ================================= */
+/* BACKGROUND */
 
 .background{
 position:absolute;
@@ -77,7 +93,7 @@ linear-gradient(
 z-index:-2;
 }
 
-/* LIGHT */
+/* LIGHTS */
 
 .light1,
 .light2{
@@ -109,7 +125,7 @@ right:-100px;
 /* STARS */
 
 .star{
-position:absolute;
+position:fixed;
 
 width:2px;
 height:2px;
@@ -136,7 +152,7 @@ transform:translateY(-100px);
 
 .content{
 width:100%;
-max-width:900px;
+max-width:950px;
 
 display:flex;
 flex-direction:column;
@@ -145,7 +161,7 @@ justify-content:center;
 
 text-align:center;
 
-padding:40px;
+margin:auto;
 }
 
 /* TITLES */
@@ -260,6 +276,7 @@ color:rgba(255,255,255,0.45);
 display:none;
 
 margin-top:45px;
+padding-bottom:100px;
 
 animation:fade 1.5s ease;
 }
@@ -299,6 +316,8 @@ iframe{
 width:720px;
 height:405px;
 
+max-width:100%;
+
 border:none;
 
 border-radius:24px;
@@ -307,12 +326,11 @@ box-shadow:
 0 20px 50px rgba(0,0,0,0.35);
 }
 
-/* ================================= */
-/* FOREST WORLD */
-/* ================================= */
+/* FOREST */
 
 #forestWorld{
 display:none;
+
 background:
 linear-gradient(
 180deg,
@@ -326,6 +344,7 @@ linear-gradient(
 
 .fog{
 position:absolute;
+
 width:1200px;
 height:400px;
 
@@ -344,33 +363,6 @@ transform:translateX(-200px);
 }
 100%{
 transform:translateX(200px);
-}
-}
-
-/* BUTTERFLIES */
-
-.butterfly{
-position:absolute;
-
-font-size:22px;
-
-animation:fly 10s linear infinite;
-opacity:0.7;
-}
-
-@keyframes fly{
-0%{
-transform:
-translateY(100vh)
-translateX(0px)
-rotate(0deg);
-}
-
-100%{
-transform:
-translateY(-120px)
-translateX(120px)
-rotate(25deg);
 }
 }
 
@@ -504,6 +496,36 @@ background:#2a2a2a;
 color:white;
 }
 
+/* BUTTERFLIES */
+
+.butterfly{
+position:absolute;
+
+font-size:24px;
+
+opacity:0.7;
+
+animation:butterflyFly linear infinite;
+}
+
+@keyframes butterflyFly{
+
+0%{
+transform:
+translateY(100vh)
+translateX(0px)
+rotate(0deg);
+}
+
+100%{
+transform:
+translateY(-150px)
+translateX(120px)
+rotate(25deg);
+}
+
+}
+
 </style>
 </head>
 
@@ -600,7 +622,7 @@ allowfullscreen>
 
 </section>
 
-<!-- FOREST WORLD -->
+<!-- FOREST -->
 
 <section class="screen hidden" id="forestWorld">
 
@@ -668,32 +690,6 @@ document.body.appendChild(star);
 
 </script>
 
-<!-- BUTTERFLIES -->
-
-<script>
-
-for(let i=0;i<15;i++){
-
-const butterfly=document.createElement('div');
-
-butterfly.className='butterfly';
-
-butterfly.innerHTML='🦋';
-
-butterfly.style.left=Math.random()*100+'vw';
-
-butterfly.style.animationDuration=
-(8+Math.random()*10)+'s';
-
-butterfly.style.animationDelay=
-Math.random()*5+'s';
-
-document.body.appendChild(butterfly);
-
-}
-
-</script>
-
 <!-- SCRIPT -->
 
 <script>
@@ -721,6 +717,16 @@ document
 .getElementById('filmReveal')
 .style.display='block';
 
+setTimeout(()=>{
+
+document
+.getElementById('filmReveal')
+.scrollIntoView({
+behavior:'smooth'
+});
+
+},200);
+
 }else{
 
 alert('Нет... это воспоминание не отсюда.');
@@ -735,13 +741,36 @@ document
 .getElementById('passwordScreen')
 .classList.add('hidden');
 
-document
-.getElementById('forestWorld')
-.style.display='flex';
+const forest =
+document.getElementById('forestWorld');
 
-document
-.getElementById('forestWorld')
-.classList.remove('hidden');
+forest.style.display='flex';
+
+forest.classList.remove('hidden');
+
+/* CREATE BUTTERFLIES ONLY HERE */
+
+for(let i=0;i<15;i++){
+
+const butterfly =
+document.createElement('div');
+
+butterfly.className='butterfly';
+
+butterfly.innerHTML='🦋';
+
+butterfly.style.left=
+Math.random()*100+'vw';
+
+butterfly.style.animationDuration=
+(8+Math.random()*10)+'s';
+
+butterfly.style.animationDelay=
+Math.random()*5+'s';
+
+forest.appendChild(butterfly);
+
+}
 
 }
 

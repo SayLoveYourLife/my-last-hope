@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
@@ -26,8 +26,6 @@ background:#050816;
 font-family:'Inter',sans-serif;
 color:white;
 }
-
-/* HIDE SCROLLBAR */
 
 ::-webkit-scrollbar{
 width:0;
@@ -49,10 +47,8 @@ overflow-x:hidden;
 
 padding:60px 20px;
 
-transition:1.2s ease;
+transition:1.4s ease;
 }
-
-/* HIDDEN */
 
 .hidden{
 opacity:0;
@@ -82,10 +78,35 @@ linear-gradient(
 #16233d 100%
 );
 
-z-index:-2;
+z-index:-3;
 }
 
-/* LIGHT */
+/* FINAL BACKGROUND */
+
+.romanticBg{
+position:absolute;
+inset:0;
+
+background:
+radial-gradient(circle at top,
+rgba(255,220,200,0.22),
+transparent 30%),
+
+radial-gradient(circle at bottom,
+rgba(255,170,190,0.15),
+transparent 40%),
+
+linear-gradient(
+180deg,
+#1b1020 0%,
+#2a1630 40%,
+#3a1f3f 100%
+);
+
+z-index:-5;
+}
+
+/* GLOW */
 
 .glow1,
 .glow2{
@@ -285,8 +306,6 @@ margin-bottom:30px;
 color:rgba(255,255,255,0.88);
 }
 
-/* VIDEO FIX */
-
 .videoWrap{
 width:100%;
 max-width:900px;
@@ -309,158 +328,169 @@ box-shadow:
 0 20px 60px rgba(0,0,0,0.45);
 }
 
-/* WORLD */
+/* TRANSITION */
 
-#cinematicWorld{
+#transitionScreen{
 display:none;
-
-background:
-linear-gradient(
-180deg,
-#02040b 0%,
-#060c18 50%,
-#0b1220 100%
-);
+background:black;
 }
 
-/* RAIN */
+.transitionText{
+font-family:'Cormorant Garamond',serif;
 
-.rain{
-position:absolute;
+font-size:70px;
 
-width:1px;
-height:120px;
-
-background:
-linear-gradient(
-180deg,
-rgba(255,255,255,0),
-rgba(255,255,255,0.18),
-rgba(255,255,255,0)
-);
-
-animation:rainFall linear infinite;
-}
-
-@keyframes rainFall{
-
-from{
-transform:translateY(-150px);
-}
-
-to{
-transform:translateY(120vh);
-}
-
-}
-
-/* MESSAGE */
-
-.messageBox{
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-
-gap:35px;
-
-max-width:1000px;
+line-height:1.4;
 
 text-align:center;
 
-animation:fadeUp 2s ease;
-}
-
-.message{
-font-family:'Cormorant Garamond',serif;
-
-font-size:58px;
-
-line-height:1.3;
-
 opacity:0;
 
-transform:translateY(30px);
-
-animation:messageFade 2s forwards;
+animation:fadeText 4s forwards;
 }
 
-.message:nth-child(1){
-animation-delay:1s;
+@keyframes fadeText{
+
+0%{
+opacity:0;
+transform:scale(1.05);
 }
 
-.message:nth-child(2){
-animation-delay:4s;
-}
-
-.message:nth-child(3){
-animation-delay:7s;
-}
-
-@keyframes messageFade{
-
-to{
+30%{
 opacity:1;
-transform:translateY(0);
 }
 
+70%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+transform:scale(0.98);
+}
+
+}
+
+/* LETTER SCREEN */
+
+#letterScreen{
+display:none;
 }
 
 /* LETTER */
 
-#letter{
-opacity:0;
+.letter{
+width:900px;
 
-margin-top:50px;
+max-width:100%;
 
-max-width:850px;
+padding:80px;
 
-padding:55px;
-
-border-radius:28px;
+border-radius:35px;
 
 background:
 linear-gradient(
 180deg,
-rgba(255,255,255,0.08),
-rgba(255,255,255,0.04)
+rgba(255,245,235,0.92),
+rgba(255,232,222,0.88)
 );
 
 backdrop-filter:blur(20px);
 
-border:1px solid rgba(255,255,255,0.08);
-
 box-shadow:
-0 20px 80px rgba(0,0,0,0.35);
+0 30px 100px rgba(0,0,0,0.35);
 
-animation:letterFade 2s forwards;
+color:#3b2430;
 
-animation-delay:10s;
+position:relative;
+
+animation:letterOpen 2s ease;
 }
 
-@keyframes letterFade{
+@keyframes letterOpen{
+
+from{
+opacity:0;
+transform:
+translateY(40px)
+scale(0.96);
+}
+
 to{
 opacity:1;
-}
+transform:
+translateY(0px)
+scale(1);
 }
 
-#letter h2{
+}
+
+.letter::before{
+content:"";
+
+position:absolute;
+
+top:0;
+left:0;
+right:0;
+height:8px;
+
+background:
+linear-gradient(
+90deg,
+#f5c6b3,
+#f8d7c8,
+#f5c6b3
+);
+
+border-radius:
+35px 35px 0 0;
+}
+
+/* LETTER TEXT */
+
+.letterIntro{
 font-family:'Cormorant Garamond',serif;
 
-font-size:56px;
+font-size:64px;
 
-margin-bottom:30px;
+line-height:1.2;
+
+margin-bottom:40px;
+
+text-align:center;
 }
 
-#letter p{
-font-size:22px;
+.letterText{
+font-size:24px;
 
 line-height:2;
 
-color:rgba(255,255,255,0.82);
+color:#4a2d38;
 }
 
-/* ANIM */
+.highlight{
+font-family:'Cormorant Garamond',serif;
+
+font-size:38px;
+
+display:block;
+
+margin:
+35px 0;
+}
+
+.signature{
+margin-top:50px;
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:42px;
+
+text-align:right;
+}
+
+/* ANIMS */
 
 @keyframes fadeUp{
 
@@ -564,7 +594,7 @@ allowfullscreen>
 
 </div>
 
-<button onclick="openWorld()">
+<button onclick="openTransition()">
 продолжить
 </button>
 
@@ -574,48 +604,79 @@ allowfullscreen>
 
 </section>
 
-<!-- WORLD -->
+<!-- TRANSITION -->
 
-<section class="screen hidden" id="cinematicWorld">
+<section class="screen hidden" id="transitionScreen">
 
-<div class="messageBox">
-
-<div class="message">
-Некоторые люди<br>
-появляются случайно.
+<div class="transitionText">
+Иногда<br>
+самые важные слова<br>
+невозможно сказать сразу.
 </div>
 
-<div class="message">
-А некоторые<br>
-меняют всё вокруг тебя.
+</section>
+
+<!-- LETTER -->
+
+<section class="screen hidden" id="letterScreen">
+
+<div class="romanticBg"></div>
+
+<div class="content">
+
+<div class="letter">
+
+<div class="letterIntro">
+Есть кое-что,<br>
+что я хотел сказать тебе давно.
 </div>
 
-<div class="message">
-И я долго думал,<br>
-с чего всё началось.
-</div>
+<div class="letterText">
 
-<div id="letter">
+Наверное, всё началось намного раньше,
+чем я сам это понял.<br><br>
 
-<h2>
-Наверное…
-</h2>
+С обычных разговоров.
+С мелочей.
+С моментов,
+которые почему-то оставались в голове дольше остальных.<br><br>
 
-<p>
-В какой-то момент ты стала человеком,
+И в какой-то момент
+ты стала человеком,
 о котором я начал думать слишком часто.<br><br>
 
-Не специально.<br>
-Не внезапно.<br><br>
+<span class="highlight">
+Мне стало важно,
+как проходит твой день.
+</span>
 
-Это просто произошло.<br><br>
+Важно,
+смеёшься ли ты.
+Важно,
+что ты чувствуешь.<br><br>
 
-И чем дальше шло время —
+И чем дальше —
 тем сильнее я понимал,
-что ты стала чем-то
-намного большим,
-чем просто “одним человеком”.
-</p>
+что ты стала для меня
+намного больше,
+чем просто “одним человеком”.<br><br>
+
+Я не знаю,
+в какой именно момент
+всё стало настолько настоящим.<br><br>
+
+Но знаю одно.<br><br>
+
+<span class="highlight">
+Я влюбился в тебя.
+</span>
+
+<div class="signature">
+— от человека,<br>
+который всё это время думал о тебе
+</div>
+
+</div>
 
 </div>
 
@@ -687,40 +748,33 @@ alert('Нет... это воспоминание не отсюда.');
 
 }
 
-/* OPEN WORLD */
+/* TRANSITION */
 
-function openWorld(){
+function openTransition(){
 
 document
 .getElementById('passwordScreen')
 .classList.add('hidden');
 
-const world =
-document.getElementById('cinematicWorld');
+const transition =
+document.getElementById('transitionScreen');
 
-world.style.display='flex';
+transition.style.display='flex';
 
-world.classList.remove('hidden');
+transition.classList.remove('hidden');
 
-/* RAIN */
+setTimeout(()=>{
 
-for(let i=0;i<70;i++){
+transition.classList.add('hidden');
 
-const rain=document.createElement('div');
+const letter =
+document.getElementById('letterScreen');
 
-rain.className='rain';
+letter.style.display='flex';
 
-rain.style.left=Math.random()*100+'vw';
+letter.classList.remove('hidden');
 
-rain.style.animationDuration=
-(2+Math.random()*2)+'s';
-
-rain.style.animationDelay=
-Math.random()*3+'s';
-
-world.appendChild(rain);
-
-}
+},4500);
 
 }
 

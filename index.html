@@ -35,77 +35,80 @@ inset:0;
 background:
 linear-gradient(
 180deg,
-#ffd6e7 0%,
-#ffc2d1 25%,
-#ffb3c6 45%,
-#d9c2ff 75%,
-#bde0fe 100%
+#f4dbe4 0%,
+#e6cfe5 30%,
+#c9c2eb 65%,
+#a9c7e8 100%
 );
 
 overflow:hidden;
 }
 
-/* GLOW */
+/* SOFT LIGHTS */
 
 .glow1{
 position:absolute;
 
-width:700px;
-height:700px;
+width:600px;
+height:600px;
 
-background:rgba(255,255,255,0.35);
-
-filter:blur(120px);
+background:rgba(255,255,255,0.22);
 
 border-radius:999px;
 
-top:-200px;
+filter:blur(120px);
+
+top:-150px;
 left:-100px;
 }
 
 .glow2{
 position:absolute;
 
-width:600px;
-height:600px;
+width:500px;
+height:500px;
 
-background:rgba(255,200,230,0.4);
+background:rgba(255,220,240,0.25);
+
+border-radius:999px;
 
 filter:blur(120px);
 
-border-radius:999px;
-
-bottom:-200px;
+bottom:-150px;
 right:-100px;
 }
 
-/* CLOUDS */
+/* STARS */
 
-.cloud{
+.star{
 position:absolute;
 
-background:rgba(255,255,255,0.18);
+width:4px;
+height:4px;
+
+background:white;
 
 border-radius:999px;
 
-filter:blur(20px);
+opacity:0.5;
 
-animation:floatClouds linear infinite;
+animation:float linear infinite;
 }
 
-@keyframes floatClouds{
+@keyframes float{
 from{
-transform:translateX(-200px);
+transform:translateY(100vh);
 }
 to{
-transform:translateX(120vw);
+transform:translateY(-100px);
 }
 }
 
-/* SCREEN */
+/* MAIN SCREEN */
 
 .screen{
 position:relative;
+
 z-index:10;
 
 height:100vh;
@@ -114,9 +117,9 @@ display:flex;
 justify-content:center;
 align-items:center;
 
-padding:20px;
-
 text-align:center;
+
+padding:20px;
 }
 
 /* CONTENT */
@@ -130,7 +133,7 @@ animation:fadeUp 2s ease forwards;
 @keyframes fadeUp{
 from{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(30px);
 }
 to{
 opacity:1;
@@ -143,41 +146,44 @@ transform:translateY(0px);
 h1{
 font-family:'Cormorant Garamond',serif;
 
-font-size:95px;
+font-size:90px;
 font-weight:400;
 
 line-height:1.1;
 
-color:white;
+color:#fffafc;
 
 text-shadow:
-0 0 30px rgba(255,255,255,0.3);
+0 4px 30px rgba(0,0,0,0.18);
 }
 
-/* TEXT */
+/* SUBTEXT */
 
 p{
-margin-top:25px;
+margin-top:30px;
 
 font-size:22px;
 
-opacity:0.8;
+letter-spacing:1px;
 
-letter-spacing:2px;
+color:rgba(255,255,255,0.9);
+
+text-shadow:
+0 2px 15px rgba(0,0,0,0.15);
 }
 
 /* BUTTON */
 
 button{
-margin-top:60px;
+margin-top:55px;
 
 padding:20px 55px;
 
-border:none;
-
 border-radius:999px;
 
-background:rgba(255,255,255,0.25);
+border:1px solid rgba(255,255,255,0.35);
+
+background:rgba(255,255,255,0.18);
 
 backdrop-filter:blur(12px);
 
@@ -190,39 +196,16 @@ cursor:pointer;
 transition:0.4s;
 
 box-shadow:
-0 10px 40px rgba(255,255,255,0.15);
+0 10px 40px rgba(255,255,255,0.12);
 }
 
 button:hover{
-transform:scale(1.06);
+transform:scale(1.05);
 
-background:rgba(255,255,255,0.4);
-}
+background:rgba(255,255,255,0.28);
 
-/* PARTICLES */
-
-.particle{
-position:absolute;
-
-width:6px;
-height:6px;
-
-background:white;
-
-border-radius:999px;
-
-opacity:0.4;
-
-animation:particles linear infinite;
-}
-
-@keyframes particles{
-from{
-transform:translateY(100vh);
-}
-to{
-transform:translateY(-100px);
-}
+box-shadow:
+0 15px 50px rgba(255,255,255,0.2);
 }
 
 </style>
@@ -237,50 +220,24 @@ transform:translateY(-100px);
 
 </div>
 
-<!-- CLOUDS -->
+<!-- STARS -->
 
 <script>
 
-for(let i=0;i<8;i++){
+for(let i=0;i<45;i++){
 
-const cloud=document.createElement('div');
+const star=document.createElement('div');
 
-cloud.className='cloud';
+star.className='star';
 
-cloud.style.width=(200+Math.random()*300)+'px';
-cloud.style.height=(60+Math.random()*80)+'px';
+star.style.left=Math.random()*100+'vw';
 
-cloud.style.top=Math.random()*100+'vh';
+star.style.animationDuration=
+(6+Math.random()*12)+'s';
 
-cloud.style.animationDuration=
-(40+Math.random()*30)+'s';
+star.style.opacity=Math.random()*0.8;
 
-cloud.style.opacity=Math.random()*0.3;
-
-document.body.appendChild(cloud);
-
-}
-
-</script>
-
-<!-- PARTICLES -->
-
-<script>
-
-for(let i=0;i<40;i++){
-
-const particle=document.createElement('div');
-
-particle.className='particle';
-
-particle.style.left=Math.random()*100+'vw';
-
-particle.style.animationDuration=
-(6+Math.random()*10)+'s';
-
-particle.style.opacity=Math.random();
-
-document.body.appendChild(particle);
+document.body.appendChild(star);
 
 }
 

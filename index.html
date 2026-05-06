@@ -1,84 +1,268 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>For Elina</title>
+<title>For Elina</title>
 
-  <style>
-    body{
-      margin:0;
-      height:100vh;
-      overflow:hidden;
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-      background:black;
-      color:white;
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-      display:flex;
-      justify-content:center;
-      align-items:center;
+<style>
 
-      font-family:Arial;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    .screen{
-      text-align:center;
-    }
+body{
+overflow:hidden;
+background:black;
+font-family:'Inter',sans-serif;
+color:white;
+height:100vh;
+}
 
-    h1{
-      font-size:70px;
-      font-weight:200;
-    }
+/* BACKGROUND */
 
-    p{
-      opacity:0.7;
-      margin-top:20px;
-      font-size:20px;
-    }
+.background{
+position:absolute;
+inset:0;
 
-    button{
-      margin-top:40px;
+background:
+radial-gradient(circle at top, rgba(255,120,200,0.12), transparent 40%),
+radial-gradient(circle at bottom, rgba(120,120,255,0.12), transparent 40%),
+black;
 
-      padding:18px 40px;
+overflow:hidden;
+}
 
-      background:transparent;
-      color:white;
+/* STARS */
 
-      border:1px solid rgba(255,255,255,0.3);
+.stars{
+position:absolute;
+width:100%;
+height:100%;
 
-      border-radius:50px;
+background-image:
+radial-gradient(white 1px, transparent 1px);
 
-      cursor:pointer;
+background-size:40px 40px;
 
-      transition:0.3s;
-    }
+opacity:0.15;
 
-    button:hover{
-      background:white;
-      color:black;
-    }
+animation:moveStars 20s linear infinite;
+}
 
-  </style>
+@keyframes moveStars{
+from{
+transform:translateY(0px);
+}
+to{
+transform:translateY(40px);
+}
+}
+
+/* GLOW */
+
+.glow{
+position:absolute;
+
+width:700px;
+height:700px;
+
+background:rgba(255,100,200,0.15);
+
+border-radius:999px;
+
+filter:blur(120px);
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+}
+
+/* MAIN SCREEN */
+
+.screen{
+position:relative;
+
+z-index:10;
+
+height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+text-align:center;
+
+padding:20px;
+}
+
+.content{
+max-width:1000px;
+animation:fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0px);
+}
+}
+
+/* TITLE */
+
+h1{
+font-family:'Cormorant Garamond',serif;
+
+font-size:90px;
+font-weight:300;
+
+line-height:1.1;
+
+letter-spacing:1px;
+}
+
+/* SUBTEXT */
+
+p{
+margin-top:30px;
+
+font-size:22px;
+
+opacity:0.7;
+
+letter-spacing:2px;
+}
+
+/* BUTTON */
+
+button{
+margin-top:60px;
+
+padding:20px 50px;
+
+border-radius:999px;
+
+border:1px solid rgba(255,255,255,0.15);
+
+background:rgba(255,255,255,0.04);
+
+color:white;
+
+font-size:18px;
+
+backdrop-filter:blur(10px);
+
+cursor:pointer;
+
+transition:0.4s;
+}
+
+button:hover{
+transform:scale(1.06);
+
+background:rgba(255,255,255,0.12);
+
+box-shadow:
+0 0 30px rgba(255,255,255,0.15);
+}
+
+/* FLOATING PARTICLES */
+
+.particle{
+position:absolute;
+
+width:4px;
+height:4px;
+
+background:white;
+
+border-radius:999px;
+
+opacity:0.3;
+
+animation:float linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+}
+to{
+transform:translateY(-100px);
+}
+}
+
+</style>
 </head>
+
 <body>
 
-  <div class="screen">
+<div class="background">
 
-    <h1>
-      Есть вещи,<br>
-      которые сложно сказать напрямую.
-    </h1>
+<div class="stars"></div>
 
-    <p>
-      Поэтому я создал целый мир.
-    </p>
+<div class="glow"></div>
 
-    <button>
-      войти
-    </button>
+</div>
 
-  </div>
+<!-- PARTICLES -->
+
+<script>
+
+for(let i=0;i<50;i++){
+
+const particle=document.createElement('div');
+
+particle.className='particle';
+
+particle.style.left=Math.random()*100+'vw';
+
+particle.style.animationDuration=
+(5+Math.random()*10)+'s';
+
+particle.style.opacity=Math.random();
+
+document.body.appendChild(particle);
+
+}
+
+</script>
+
+<!-- SCREEN -->
+
+<section class="screen">
+
+<div class="content">
+
+<h1>
+Есть вещи,<br>
+которые сложно сказать напрямую.
+</h1>
+
+<p>
+Поэтому я создал целый мир.
+</p>
+
+<button>
+войти
+</button>
+
+</div>
+
+</section>
 
 </body>
 </html>

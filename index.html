@@ -20,35 +20,42 @@ box-sizing:border-box;
 }
 
 body{
-min-height:100vh;
-overflow-x:hidden;
-overflow-y:auto;
-
-background:#0f172a;
-
+overflow:hidden;
+height:100vh;
 font-family:'Inter',sans-serif;
+background:#0f172a;
 color:white;
 }
 
-/* SCROLLBAR */
+/* GLOBAL SCREENS */
 
-::-webkit-scrollbar{
-width:10px;
+.screen{
+position:absolute;
+inset:0;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+overflow:hidden;
+
+transition:1.5s;
 }
 
-::-webkit-scrollbar-track{
-background:#111827;
+/* HIDDEN */
+
+.hidden{
+opacity:0;
+pointer-events:none;
+transform:scale(1.05);
 }
 
-::-webkit-scrollbar-thumb{
-background:rgba(255,255,255,0.15);
-border-radius:999px;
-}
-
-/* BACKGROUND */
+/* ================================= */
+/* FIRST SCENE */
+/* ================================= */
 
 .background{
-position:fixed;
+position:absolute;
 inset:0;
 
 background:
@@ -102,7 +109,7 @@ right:-100px;
 /* STARS */
 
 .star{
-position:fixed;
+position:absolute;
 
 width:2px;
 height:2px;
@@ -125,25 +132,11 @@ transform:translateY(-100px);
 }
 }
 
-/* SCREEN */
-
-.screen{
-width:100%;
-
-min-height:100vh;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-padding:60px 20px;
-}
-
 /* CONTENT */
 
 .content{
 width:100%;
-max-width:950px;
+max-width:900px;
 
 display:flex;
 flex-direction:column;
@@ -151,6 +144,8 @@ align-items:center;
 justify-content:center;
 
 text-align:center;
+
+padding:40px;
 }
 
 /* TITLES */
@@ -174,7 +169,7 @@ text-shadow:
 .password-title{
 font-family:'Cormorant Garamond',serif;
 
-font-size:58px;
+font-size:56px;
 font-weight:500;
 
 line-height:1.2;
@@ -233,8 +228,6 @@ background:rgba(255,255,255,0.14);
 input{
 width:360px;
 
-margin-top:35px;
-
 padding:18px;
 
 border:none;
@@ -253,20 +246,20 @@ color:white;
 font-size:17px;
 
 text-align:center;
+
+margin-top:35px;
 }
 
 input::placeholder{
 color:rgba(255,255,255,0.45);
 }
 
-/* FILM REVEAL */
+/* FILM */
 
 #filmReveal{
 display:none;
 
-margin-top:60px;
-
-padding-bottom:120px;
+margin-top:45px;
 
 animation:fade 1.5s ease;
 }
@@ -299,16 +292,12 @@ line-height:1.8;
 
 color:rgba(255,255,255,0.88);
 
-margin-bottom:35px;
+margin-bottom:30px;
 }
 
-/* VIDEO */
-
 iframe{
-width:900px;
-height:500px;
-
-max-width:100%;
+width:720px;
+height:405px;
 
 border:none;
 
@@ -318,10 +307,201 @@ box-shadow:
 0 20px 50px rgba(0,0,0,0.35);
 }
 
-/* HIDDEN */
+/* ================================= */
+/* FOREST WORLD */
+/* ================================= */
 
-.hidden{
+#forestWorld{
 display:none;
+background:
+linear-gradient(
+180deg,
+#071018 0%,
+#0d1a23 45%,
+#10212d 100%
+);
+}
+
+/* FOG */
+
+.fog{
+position:absolute;
+width:1200px;
+height:400px;
+
+background:rgba(255,255,255,0.03);
+
+filter:blur(90px);
+
+border-radius:999px;
+
+animation:fogMove 20s linear infinite;
+}
+
+@keyframes fogMove{
+0%{
+transform:translateX(-200px);
+}
+100%{
+transform:translateX(200px);
+}
+}
+
+/* BUTTERFLIES */
+
+.butterfly{
+position:absolute;
+
+font-size:22px;
+
+animation:fly 10s linear infinite;
+opacity:0.7;
+}
+
+@keyframes fly{
+0%{
+transform:
+translateY(100vh)
+translateX(0px)
+rotate(0deg);
+}
+
+100%{
+transform:
+translateY(-120px)
+translateX(120px)
+rotate(25deg);
+}
+}
+
+/* STUMP */
+
+.stump{
+position:absolute;
+
+bottom:120px;
+
+width:220px;
+height:140px;
+
+background:
+linear-gradient(
+180deg,
+#5c4033 0%,
+#3b2a22 100%
+);
+
+border-radius:
+50% 50%
+35% 35%;
+
+box-shadow:
+0 0 50px rgba(0,0,0,0.4);
+
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* NOTE */
+
+.note{
+width:120px;
+height:90px;
+
+background:#f5e6c8;
+
+color:#2a2a2a;
+
+font-size:16px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+
+padding:10px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+transform:rotate(-5deg);
+
+transition:0.3s;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.3);
+}
+
+.note:hover{
+transform:
+rotate(-3deg)
+scale(1.05);
+}
+
+/* NOTE POPUP */
+
+#notePopup{
+position:absolute;
+
+inset:0;
+
+background:rgba(0,0,0,0.65);
+
+backdrop-filter:blur(10px);
+
+display:none;
+
+justify-content:center;
+align-items:center;
+
+z-index:20;
+}
+
+.noteContent{
+width:700px;
+
+padding:60px;
+
+background:
+linear-gradient(
+180deg,
+#f6eddc 0%,
+#eadcc0 100%
+);
+
+border-radius:25px;
+
+color:#2a2a2a;
+
+text-align:center;
+
+box-shadow:
+0 20px 80px rgba(0,0,0,0.45);
+}
+
+.noteContent h2{
+font-family:'Cormorant Garamond',serif;
+
+font-size:52px;
+
+margin-bottom:25px;
+}
+
+.noteContent p{
+font-size:22px;
+
+line-height:1.9;
+}
+
+.closeBtn{
+margin-top:40px;
+
+background:#2a2a2a;
+
+color:white;
 }
 
 </style>
@@ -329,7 +509,9 @@ display:none;
 
 <body>
 
-<!-- BACKGROUND -->
+<!-- SCREEN 1 -->
+
+<section class="screen" id="mainScreen">
 
 <div class="background">
 
@@ -337,33 +519,6 @@ display:none;
 <div class="light2"></div>
 
 </div>
-
-<!-- STARS -->
-
-<script>
-
-for(let i=0;i<35;i++){
-
-const star=document.createElement('div');
-
-star.className='star';
-
-star.style.left=Math.random()*100+'vw';
-
-star.style.animationDuration=
-(8+Math.random()*10)+'s';
-
-star.style.opacity=Math.random()*0.7;
-
-document.body.appendChild(star);
-
-}
-
-</script>
-
-<!-- FIRST SCREEN -->
-
-<section class="screen" id="mainScreen">
 
 <div class="content">
 
@@ -384,9 +539,16 @@ document.body.appendChild(star);
 
 </section>
 
-<!-- SECOND SCREEN -->
+<!-- SCREEN 2 -->
 
 <section class="screen hidden" id="passwordScreen">
+
+<div class="background">
+
+<div class="light1"></div>
+<div class="light2"></div>
+
+</div>
 
 <div class="content">
 
@@ -426,24 +588,125 @@ src="https://www.youtube.com/embed/6MUcuqbGTxc"
 allowfullscreen>
 </iframe>
 
+<br>
+
+<button onclick="openForest()">
+продолжить
+</button>
+
 </div>
 
 </div>
 
 </section>
 
+<!-- FOREST WORLD -->
+
+<section class="screen hidden" id="forestWorld">
+
+<div class="fog"></div>
+
+<div class="stump">
+
+<div class="note" onclick="openNote()">
+открыть<br>
+записку
+</div>
+
+</div>
+
+</section>
+
+<!-- NOTE -->
+
+<div id="notePopup">
+
+<div class="noteContent">
+
+<h2>
+Я долго думал,<br>
+с чего всё началось.
+</h2>
+
+<p>
+Может с какого-то разговора.<br>
+Может со случайного момента.<br><br>
+
+Но в какой-то момент<br>
+ты стала человеком,<br>
+о котором я начал думать слишком часто.
+</p>
+
+<button class="closeBtn" onclick="closeNote()">
+закрыть
+</button>
+
+</div>
+
+</div>
+
+<!-- STARS -->
+
+<script>
+
+for(let i=0;i<35;i++){
+
+const star=document.createElement('div');
+
+star.className='star';
+
+star.style.left=Math.random()*100+'vw';
+
+star.style.animationDuration=
+(8+Math.random()*10)+'s';
+
+star.style.opacity=Math.random()*0.7;
+
+document.body.appendChild(star);
+
+}
+
+</script>
+
+<!-- BUTTERFLIES -->
+
+<script>
+
+for(let i=0;i<15;i++){
+
+const butterfly=document.createElement('div');
+
+butterfly.className='butterfly';
+
+butterfly.innerHTML='🦋';
+
+butterfly.style.left=Math.random()*100+'vw';
+
+butterfly.style.animationDuration=
+(8+Math.random()*10)+'s';
+
+butterfly.style.animationDelay=
+Math.random()*5+'s';
+
+document.body.appendChild(butterfly);
+
+}
+
+</script>
+
+<!-- SCRIPT -->
+
 <script>
 
 function openPassword(){
 
-document.getElementById('mainScreen').style.display='none';
+document
+.getElementById('mainScreen')
+.classList.add('hidden');
 
-document.getElementById('passwordScreen').classList.remove('hidden');
-
-window.scrollTo({
-top:0,
-behavior:'smooth'
-});
+document
+.getElementById('passwordScreen')
+.classList.remove('hidden');
 
 }
 
@@ -454,22 +717,47 @@ document.getElementById('passwordInput').value;
 
 if(password === '01:16:42'){
 
-document.getElementById('filmReveal').style.display='block';
-
-setTimeout(()=>{
-
-document.getElementById('filmReveal')
-.scrollIntoView({
-behavior:'smooth'
-});
-
-},200);
+document
+.getElementById('filmReveal')
+.style.display='block';
 
 }else{
 
 alert('Нет... это воспоминание не отсюда.');
 
 }
+
+}
+
+function openForest(){
+
+document
+.getElementById('passwordScreen')
+.classList.add('hidden');
+
+document
+.getElementById('forestWorld')
+.style.display='flex';
+
+document
+.getElementById('forestWorld')
+.classList.remove('hidden');
+
+}
+
+function openNote(){
+
+document
+.getElementById('notePopup')
+.style.display='flex';
+
+}
+
+function closeNote(){
+
+document
+.getElementById('notePopup')
+.style.display='none';
 
 }
 
